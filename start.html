@@ -8,21 +8,64 @@
     body {
       margin: 0;
       font-family: 'Cairo', sans-serif;
-      background-color: #00BFFF;
+      background: linear-gradient(to bottom, #1E90FF, #00CED1);
       color: white;
       text-align: center;
-      padding: 50px;
+      padding: 60px 20px;
+      box-sizing: border-box;
     }
+
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
     }
+
     p {
-      font-size: 1.2rem;
-      margin-top: 20px;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+    .back-btn {
+      background-color: white;
+      color: #1E90FF;
+      padding: 12px 25px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: background-color 0.3s, color 0.3s;
+      display: inline-block;
+    }
+
+    .back-btn:hover {
+      background-color: #f0f0f0;
+      color: #0077b6;
+    }
+
+    /* ميديا كويري للشاشات الصغيرة */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .back-btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
 <body>
+  <h1>مرحبًا بك في صفحة البداية</h1>
+  <p>هنا تبدأ رحلتك معنا ❤️</p>
+  
+  <a class="back-btn" href="index.html">⬅ الرجوع إلى الصفحة الرئيسية</a>
+</body>
+</html>
+
   <h1>مرحبًا بك في صفحة البداية</h1>
   <p>هنا تبدأ رحلتك معنا ❤️</p>
 </body>

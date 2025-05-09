@@ -4,35 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>دعم الأطفال ذوي الاحتياجات الخاصة</title>
-  <st.info-section {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 60px 20px;
-  background-color: #f8f8f8;
-  color: #333;
-}
-
-.info-box {
-  text-align: center;
-  width: 200px; /* يمكن تعديله حسب التصميم */
-}
-
-.box {
-  width: 150px;
-  height: 100px;
-  background-color: #1E90FF;
-  border-radius: 15px;
-  margin: 0 auto 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.info-box p {
-  font-weight: bold;
-  font-size: 1rem;
-}
-yle>
+  <style>
     body {
       margin: 0;
       font-family: 'Cairo', sans-serif;
@@ -40,6 +12,7 @@ yle>
       color: white;
       text-align: center;
     }
+
     nav {
       background-color: #4682B4;
       padding: 15px;
@@ -47,23 +20,28 @@ yle>
       justify-content: space-around;
       flex-wrap: wrap;
     }
+
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
     }
+
     .hero {
       padding: 60px 20px;
     }
+
     .hero h1 {
       font-size: 2.5rem;
-       color: white; 
+      color: white;
     }
+
     .hero p {
       font-size: 1.2rem;
       margin-top: 10px;
-       color: white; 
+      color: white;
     }
+
     .btn {
       margin-top: 30px;
       background-color: #00BFFF;
@@ -74,6 +52,7 @@ yle>
       text-decoration: none;
       display: inline-block;
     }
+
     .chat-btn {
       position: fixed;
       bottom: 20px;
@@ -85,22 +64,74 @@ yle>
       text-decoration: none;
       font-weight: bold;
     }
+
+    /* مربعات المعلومات */
+    .info-section {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 60px 20px;
+      background-color: #f8f8f8;
+      color: #333;
+    }
+
+    .info-box {
+      text-align: center;
+      width: 200px;
+    }
+
+    .box {
+      width: 150px;
+      height: 100px;
+      background-color: #1E90FF;
+      border-radius: 15px;
+      margin: 0 auto 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .info-box p {
+      font-weight: bold;
+      font-size: 1rem;
+    }
   </style>
 </head>
+<body>
 
-    <a href="#">الصفحة الرئيسية </a>
-   
+  <nav>
+    <a href="#">الصفحة الرئيسية</a>
     <a href="#">نبض</a>
   </nav>
+
   <div class="hero">
     <p>✨ الرؤيا تحقق من برامج نبض ✨</p>
-    <h1>❤️نرى النور في كل طفل، في أي ركن من هذا العالم  </h1>
-    <p>ندعم طفلك عن بعد في كل لحظة بالمنزل والمدرسة .</p>
+    <h1>❤️ نرى النور في كل طفل، في أي ركن من هذا العالم ❤️</h1>
+    <p>ندعم طفلك عن بعد في كل لحظة بالمنزل والمدرسة.</p>
     <a class="btn" href="start.html">ابدأ الآن 🚀</a>
-
-  
   </div>
+
+  <!-- المربعات -->
+  <div class="info-section">
+    <div class="info-box">
+      <div class="box"></div>
+      <p>رؤيتنا</p>
+    </div>
+    <div class="info-box">
+      <div class="box"></div>
+      <p>الخطة</p>
+    </div>
+    <div class="info-box">
+      <div class="box"></div>
+      <p>الدعم</p>
+    </div>
+    <div class="info-box">
+      <div class="box"></div>
+      <p>انضمام</p>
+    </div>
+  </div>
+
   <a class="chat-btn" href="#">Let's Chat!</a>
+
 </body>
 </html>
 

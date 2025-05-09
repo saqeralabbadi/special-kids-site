@@ -4,8 +4,100 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>دعم الأطفال ذوي الاحتياجات الخاصة</title>
+  
+  <!-- إضافة رابط Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
   <style>
     body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom, #1E90FF, #00BFFF);
+      color: white;
+      text-align: center;
+    }
+
+    .info-section {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 60px 20px;
+      background-color: #f8f8f8;
+      color: #333;
+    }
+
+    .info-box {
+      text-align: center;
+      width: 200px;
+    }
+
+    .box {
+      width: 150px;
+      height: 100px;
+      background-color: #1E90FF;
+      border-radius: 15px;
+      margin: 0 auto 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .info-box p {
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    /* تخصيص الأيقونات */
+    .box i {
+      font-size: 40px;
+      color: white;
+      margin-top: 30px; /* تعديل المسافة بين الأيقونة والحد السفلي للمربع */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- المربعات مع الأيقونات -->
+  <div class="info-section">
+    <div class="info-box">
+      <a href="vision.html">
+        <div class="box">
+          <i class="fas fa-eye"></i> <!-- أيقونة العين -->
+        </div>
+        <p>رؤيتنا</p>
+      </a>
+    </div>
+
+    <div class="info-box">
+      <a href="plan.html">
+        <div class="box">
+          <i class="fas fa-calendar-check"></i> <!-- أيقونة التقويم -->
+        </div>
+        <p>الخطة</p>
+      </a>
+    </div>
+
+    <div class="info-box">
+      <a href="support.html">
+        <div class="box">
+          <i class="fas fa-hands-helping"></i> <!-- أيقونة اليدين المتشابكتين -->
+        </div>
+        <p>الدعم</p>
+      </a>
+    </div>
+
+    <div class="info-box">
+      <a href="join.html">
+        <div class="box">
+          <i class="fas fa-users"></i> <!-- أيقونة الأشخاص -->
+        </div>
+        <p>انضمام</p>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
+
       margin: 0;
       font-family: 'Cairo', sans-serif;
       background: linear-gradient(to bottom, #1E90FF, #00BFFF);

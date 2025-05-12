@@ -3,171 +3,333 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>دعم الأطفال ذوي الاحتياجات الخاصة</title>
+  <title>نبض – نسخة ملوّنة</title>
 
-  <!-- إضافة رابط Font Awesome -->
+  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
   <style>
-   body {
-  margin: 0;
-  font-family: 'Cairo', sans-serif;
-  background: linear-gradient(to bottom, #0D1B2A, #1E90FF, #3CB371);
-  min-height: 100vh;
-  color: white;
-  text-align: center;
-}
-
-
-    nav {
-      background-color: #1E3A8A; /* كحلي غامق */
-      padding: 15px;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
+    :root {
+      --color-indigo: #4B0082;
+      --color-gray:   #808080;
+      --color-green:  #3CB371;
+      --btn-hover-dark: rgba(0,0,0,0.1);
     }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Cairo', sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* ====== NAVBAR ====== */
+    nav {
+      background: linear-gradient(90deg, var(--color-indigo), var(--color-gray), var(--color-green));
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
     nav a {
       color: white;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      transition: opacity .3s;
+    }
+    nav a:hover {
+      opacity: .8;
     }
 
+    /* ====== HERO ====== */
     .hero {
-      padding: 60px 20px;
+      background: linear-gradient(135deg, var(--color-indigo), var(--color-gray), var(--color-green));
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem;
     }
-
     .hero h1 {
       font-size: 2.5rem;
-      color: white;
+      margin-bottom: 1rem;
     }
-
     .hero p {
       font-size: 1.2rem;
-      margin-top: 10px;
-      color: white;
+      margin-bottom: 2rem;
     }
-
-    .btn {
-      margin-top: 30px;
-      background-color: #32d3aa; /* اللون التركوازي */
-      color: white;
-      padding: 10px 25px;
+    .hero .btn {
+      background: white;
+      color: var(--color-indigo);
+      padding: .75rem 2rem;
       border-radius: 30px;
       font-weight: bold;
       text-decoration: none;
-      display: inline-block;
+      transition: background .3s, box-shadow .3s;
+    }
+    .hero .btn:hover {
+      background: var(--btn-hover-dark);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
-    .chat-btn {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background-color: #1E3A8A; /* كحلي غامق */
-      color: white;
-      padding: 12px 20px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
+    /* ====== WHAT WE OFFER ====== */
+    .offer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 4rem 2rem;
+      gap: 2rem;
     }
-
-   .info-section {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 60px 20px;
-  background: linear-gradient(to bottom, #0D1B2A, #1E90FF, #3CB371);
-  color: white;
-}
-
-
-    .info-box {
-      text-align: center;
-      width: 200px;
+    .offer .text {
+      flex: 1 1 300px;
     }
-
- .box {
-  width: 150px;
-  height: 100px;
-  background-color: #1E90FF;
-  border-radius: 15px;
-  margin: 0 auto 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-
-
-    .info-box p {
-      font-weight: bold;
+    .offer .text h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--color-indigo);
+    }
+    .offer .text p {
       font-size: 1rem;
-      color: #333; /* نص باللون الداكن */
+      margin-bottom: 1.5rem;
+    }
+    .offer .image {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+    .offer .image img {
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
     }
 
-    /* تخصيص الأيقونات */
-    .box i {
-      font-size: 40px;
+    /* ====== SERVICES GRID ====== */
+    .services {
+      background: #f7f7f7;
+      padding: 4rem 2rem;
+    }
+    .services h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--color-indigo);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform .3s;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+    .service-card i {
+      font-size: 2rem;
+      margin-bottom: .75rem;
+      color: var(--color-green);
+    }
+    .service-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: .5rem;
+    }
+    .service-card p {
+      font-size: .95rem;
+      color: #555;
+    }
+
+    /* ====== OUR WHY ====== */
+    .our-why {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .our-why h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--color-indigo);
+    }
+    .our-why p {
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+    }
+    .our-why .btn-secondary {
+      background: var(--color-green);
       color: white;
-      margin-top: 30px;
+      padding: .75rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: opacity .3s;
+    }
+    .our-why .btn-secondary:hover {
+      opacity: .8;
     }
 
+    /* ====== TESTIMONIALS ====== */
+    .testimonials {
+      background: #f7f7f7;
+      padding: 4rem 2rem;
+    }
+    .testimonials h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--color-indigo);
+    }
+    .testimonial {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      text-align: center;
+    }
+    .testimonial img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: .75rem;
+    }
+    .testimonial .author {
+      font-weight: bold;
+      color: var(--color-indigo);
+    }
+
+    /* ====== FOOTER ====== */
+    footer {
+      background: #222;
+      color: #ccc;
+      padding: 2rem;
+      text-align: center;
+    }
+    footer .social a {
+      color: #ccc;
+      margin: 0 .5rem;
+      font-size: 1.2rem;
+      transition: color .3s;
+    }
+    footer .social a:hover {
+      color: white;
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 768px) {
+      .offer { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
 
+  <!-- NAVBAR -->
   <nav>
-    <a href="#">الصفحة الرئيسية</a>
-    <a href="#">نبض</a>
+    <div class="logo">CIPPO Egypt</div>
+    <ul>
+      <li><a href="#">Start Here</a></li>
+      <li><a href="#">Plans & Pricing</a></li>
+      <li><a href="#">Join Our Team</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Other Services</a></li>
+    </ul>
   </nav>
 
-  <div class="hero">
-    <p>✨ الرؤيا تحقق من برامج نبض ✨</p>
-    <h1>❤️ نرى النور في كل طفل، في أي ركن من هذا العالم ❤️</h1>
-    <p>ندعم طفلك عن بعد في كل لحظة بالمنزل والمدرسة.</p>
-    <a class="btn" href="start.html">ابدأ الآن 🚀</a>
-  </div>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>ابدأ رحلتك معنا</h1>
+    <p>دعم شامل للأطفال ذوي الاحتياجات الخاصة عن بُعد بكل احترافية واهتمام.</p>
+    <a href="#" class="btn">Start Now</a>
+  </section>
 
-  <!-- المربعات مع الأيقونات -->
-  <div class="info-section">
-    <div class="info-box">
-      <a href="vision.html">
-        <div class="box">
-          <i class="fas fa-eye"></i> <!-- أيقونة العين -->
-        </div>
-        <p>رؤيتنا</p>
-      </a>
+  <!-- WHAT WE OFFER -->
+  <section class="offer">
+    <div class="text">
+      <h2>ما نقدمه</h2>
+      <p>برامج فردية وجماعية في مجالات التطوير الأكاديمي والصحة النفسية والعلاج بالمرح.</p>
+      <a href="#" class="btn">اعرف أكثر</a>
     </div>
-
-    <div class="info-box">
-      <a href="plan.html">
-        <div class="box">
-          <i class="fas fa-calendar-check"></i> <!-- أيقونة التقويم -->
-        </div>
-        <p>الخطة</p>
-      </a>
+    <div class="image">
+      <img src="https://via.placeholder.com/500x350?text=Our+Offer" alt="Our Offer">
     </div>
+  </section>
 
-    <div class="info-box">
-      <a href="support.html">
-        <div class="box">
-          <i class="fas fa-hands-helping"></i> <!-- أيقونة اليدين المتشابكتين -->
-        </div>
-        <p>الدعم</p>
-      </a>
+  <!-- SERVICES GRID -->
+  <section class="services">
+    <h2>اختر برنامجك</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <i class="fas fa-brain"></i>
+        <h3>Neurodiversity</h3>
+        <p>برامج لدعم الاحتياجات العصبية المتنوعة.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-heart"></i>
+        <h3>Mental Health</h3>
+        <p>جلسات استشارية لتعزيز الصحة النفسية.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-book"></i>
+        <h3>Academic Development</h3>
+        <p>خطة تعليمية فردية لتطوير الأداء الدراسي.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-smile"></i>
+        <h3>Fun Therapy</h3>
+        <p>أنشطة ترفيهية وعلاجية في آنٍ واحد.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="info-box">
-      <a href="join.html">
-        <div class="box">
-          <i class="fas fa-users"></i> <!-- أيقونة الأشخاص -->
-        </div>
-        <p>انضمام</p>
-      </a>
+  <!-- OUR WHY -->
+  <section class="our-why">
+    <h2>لماذا نحن؟</h2>
+    <p>لأننا نؤمن بقدرات كل طفل ونعمل على تطويرها من خلال فريق من المختصين والمحترفين.</p>
+    <a href="#" class="btn-secondary">Learn More</a>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <h2>قصص نجاح</h2>
+    <div class="testimonial">
+      <img src="https://via.placeholder.com/80" alt="User Photo">
+      <p>“بفضل CIPPO، تطورت مهارات ابني الأكاديمية والنفسية بشكل مذهل.”</p>
+      <div class="author">– أم أحمد</div>
     </div>
-  </div>
+    <div class="testimonial">
+      <img src="https://via.placeholder.com/80" alt="User Photo">
+      <p>“التواصل الدائم مع الفريق جعلنا نشعر بالأمان والدعم.”</p>
+      <div class="author">– والد مريم</div>
+    </div>
+  </section>
 
-  <a class="chat-btn" href="#">تحدث معنا 💬</a>
+  <!-- FOOTER -->
+  <footer>
+    <div class="social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+    <p>نبض. جميع الحقوق محفوظة.</p>
+  </footer>
 
 </body>
 </html>
+
 

@@ -15,8 +15,7 @@
     :root {
       --color-darkblue: #00008B;
       --color-indigo:   #4B0082;
-      --color-gray:     #808080;
-      --color-green:    #3CB371;
+      --color-green:    #2FAF4E; /* الأخضر الجديد */
     }
 
     * {
@@ -26,20 +25,24 @@
     }
     body {
       font-family: 'Cairo', sans-serif;
-      color: #333;
+      color: white;
       line-height: 1.6;
-      background: #fff;
+    }
+
+    /* تدرج لوني موحد */
+    .gradient-bg {
+      background: linear-gradient(
+        135deg,
+        var(--color-darkblue),
+        var(--color-indigo),
+        var(--color-green)
+      );
+      color: white;
     }
 
     /* ====== NAVBAR ====== */
     nav {
-      background: linear-gradient(
-        90deg,
-        var(--color-darkblue),
-        var(--color-indigo),
-        var(--color-gray),
-        var(--color-green)
-      );
+      composes: gradient-bg;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -48,7 +51,6 @@
     nav .logo {
       font-size: 1.5rem;
       font-weight: bold;
-      color: white;
     }
     nav ul {
       list-style: none;
@@ -67,14 +69,7 @@
 
     /* ====== HERO ====== */
     .hero {
-      background: linear-gradient(
-        135deg,
-        var(--color-darkblue),
-        var(--color-indigo),
-        var(--color-gray),
-        var(--color-green)
-      );
-      color: white;
+      composes: gradient-bg;
       text-align: center;
       padding: 5rem 2rem;
     }
@@ -96,45 +91,38 @@
       transition: background .3s, box-shadow .3s;
     }
     .hero .btn:hover {
-      background: rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.2);
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
-    /* ====== WHAT WE OFFER ====== */
+    /* ====== OFFER ====== */
     .offer {
+      composes: gradient-bg;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       padding: 4rem 2rem;
       gap: 2rem;
     }
-    .offer .text {
-      flex: 1 1 300px;
-    }
     .offer .text h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
-      color: var(--color-darkblue);
     }
     .offer .text p {
       font-size: 1rem;
       margin-bottom: 1.5rem;
     }
     .offer .text .btn {
-      background: var(--color-darkblue);
-      color: white;
+      background: white;
+      color: var(--color-darkblue);
       padding: .75rem 2rem;
       border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
-      transition: opacity .3s;
+      transition: background .3s;
     }
     .offer .text .btn:hover {
-      opacity: .8;
-    }
-    .offer .image {
-      flex: 1 1 300px;
-      text-align: center;
+      background: rgba(255,255,255,0.2);
     }
     .offer .image img {
       max-width: 100%;
@@ -144,14 +132,13 @@
 
     /* ====== SERVICES GRID ====== */
     .services {
-      background: #f7f7f7;
+      composes: gradient-bg;
       padding: 4rem 2rem;
     }
     .services h2 {
       text-align: center;
       font-size: 2rem;
       margin-bottom: 2rem;
-      color: var(--color-darkblue);
     }
     .services-grid {
       display: grid;
@@ -159,10 +146,9 @@
       gap: 1.5rem;
     }
     .service-card {
-      background: white;
+      background: rgba(255, 255, 255, 0.1);
       padding: 1.5rem;
       border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       text-align: center;
       transition: transform .3s;
     }
@@ -172,7 +158,7 @@
     .service-card i {
       font-size: 2rem;
       margin-bottom: .75rem;
-      color: var(--color-green);
+      color: white;
     }
     .service-card h3 {
       font-size: 1.2rem;
@@ -180,50 +166,51 @@
     }
     .service-card p {
       font-size: .95rem;
-      color: #555;
     }
 
     /* ====== OUR WHY ====== */
     .our-why {
-      padding: 4rem 2rem;
+      composes: gradient-bg;
       text-align: center;
+      padding: 4rem 2rem;
     }
     .our-why h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
-      color: var(--color-darkblue);
     }
     .our-why p {
       max-width: 800px;
       margin: 0 auto 1.5rem;
     }
     .our-why .btn-secondary {
-      background: var(--color-green);
-      color: white;
+      background: white;
+      color: var(--color-darkblue);
       padding: .75rem 2rem;
       border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
-      transition: opacity .3s;
+      transition: background .3s;
     }
     .our-why .btn-secondary:hover {
-      opacity: .8;
+      background: rgba(255,255,255,0.2);
     }
 
     /* ====== TESTIMONIALS ====== */
     .testimonials {
-      background: #f7f7f7;
+      composes: gradient-bg;
       padding: 4rem 2rem;
     }
     .testimonials h2 {
       text-align: center;
       font-size: 2rem;
       margin-bottom: 2rem;
-      color: var(--color-darkblue);
     }
     .testimonial {
+      background: rgba(255, 255, 255, 0.1);
       max-width: 600px;
       margin: 0 auto 2rem;
+      padding: 1rem;
+      border-radius: 15px;
       text-align: center;
     }
     .testimonial img {
@@ -239,28 +226,27 @@
     }
     .testimonial .author {
       font-weight: bold;
-      color: var(--color-darkblue);
     }
 
     /* ====== FOOTER ====== */
     footer {
-      background: #222;
-      color: #ccc;
-      padding: 2rem;
+      background: var(--color-darkblue);
       text-align: center;
+      padding: 2rem;
     }
     footer .social a {
-      color: #ccc;
+      color: white;
       margin: 0 .5rem;
       font-size: 1.2rem;
-      transition: color .3s;
+      transition: opacity .3s;
     }
     footer .social a:hover {
-      color: white;
+      opacity: .8;
     }
     footer p {
       margin-top: 1rem;
       font-size: .9rem;
+      color: white;
     }
 
     /* ====== RESPONSIVE ====== */
@@ -286,14 +272,14 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero gradient-bg">
     <h1>ابدأ رحلتك معنا</h1>
     <p>دعم احترافي للأطفال ذوي الاحتياجات الخاصة عن بُعد وبأعلى معايير الجودة.</p>
     <a href="#" class="btn">ابدأ الآن 🚀</a>
   </section>
 
   <!-- WHAT WE OFFER -->
-  <section class="offer">
+  <section class="offer gradient-bg">
     <div class="text">
       <h2>ما نقدّم</h2>
       <p>برامج فردية وجماعية في مجالات التطوير الأكاديمي، الصحة النفسية، والعلاج المرحّي.</p>
@@ -305,7 +291,7 @@
   </section>
 
   <!-- SERVICES GRID -->
-  <section class="services">
+  <section class="services gradient-bg">
     <h2>اختر برنامجك</h2>
     <div class="services-grid">
       <div class="service-card">
@@ -332,24 +318,24 @@
   </section>
 
   <!-- OUR WHY -->
-  <section class="our-why">
+  <section class="our-why gradient-bg">
     <h2>لماذا نحن؟</h2>
     <p>لأننا نؤمن بأن لكل طفل حقّ الأنماء والتطوّر، ونعمل على ذلك بفريق من الخبراء.</p>
     <a href="#" class="btn-secondary">تعرف على المزيد</a>
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="testimonials">
+  <section class="testimonials gradient-bg">
     <h2>قصص نجاح</h2>
     <div class="testimonial">
       <img src="https://via.placeholder.com/80" alt="صورة مستخدم">
       <p>“بفضل فريق CIPPO، لاحظت تطوّرًا واضحًا في مهارات ابني الأكاديمية والنفسية.”</p>
-      
+      <div class="author">– أمّ أحمد</div>
     </div>
     <div class="testimonial">
       <img src="https://via.placeholder.com/80" alt="صورة مستخدم">
       <p>“التواصل الدائم والدعم المستمر أشعرنا بالأمان والرضا.”</p>
-      
+      <div class="author">– والد مريم</div>
     </div>
   </section>
 
@@ -365,5 +351,6 @@
 
 </body>
 </html>
+
 
 

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>نبض – نسخة ملوّنة</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>منصة CIPPO Egypt</title>
 
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Font Awesome للأيقونات -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    rel="stylesheet"
+  />
 
   <style>
     :root {
-      --color-indigo: #4B0082;
-      --color-gray:   #808080;
-      --color-green:  #3CB371;
-      --btn-hover-dark: rgba(0,0,0,0.1);
+      --color-darkblue: #00008B;
+      --color-indigo:   #4B0082;
+      --color-gray:     #808080;
+      --color-green:    #3CB371;
     }
 
     * {
@@ -25,11 +28,18 @@
       font-family: 'Cairo', sans-serif;
       color: #333;
       line-height: 1.6;
+      background: #fff;
     }
 
     /* ====== NAVBAR ====== */
     nav {
-      background: linear-gradient(90deg, var(--color-indigo), var(--color-gray), var(--color-green));
+      background: linear-gradient(
+        90deg,
+        var(--color-darkblue),
+        var(--color-indigo),
+        var(--color-gray),
+        var(--color-green)
+      );
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -57,7 +67,13 @@
 
     /* ====== HERO ====== */
     .hero {
-      background: linear-gradient(135deg, var(--color-indigo), var(--color-gray), var(--color-green));
+      background: linear-gradient(
+        135deg,
+        var(--color-darkblue),
+        var(--color-indigo),
+        var(--color-gray),
+        var(--color-green)
+      );
       color: white;
       text-align: center;
       padding: 5rem 2rem;
@@ -72,7 +88,7 @@
     }
     .hero .btn {
       background: white;
-      color: var(--color-indigo);
+      color: var(--color-darkblue);
       padding: .75rem 2rem;
       border-radius: 30px;
       font-weight: bold;
@@ -80,7 +96,7 @@
       transition: background .3s, box-shadow .3s;
     }
     .hero .btn:hover {
-      background: var(--btn-hover-dark);
+      background: rgba(0,0,0,0.1);
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
@@ -98,11 +114,23 @@
     .offer .text h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
-      color: var(--color-indigo);
+      color: var(--color-darkblue);
     }
     .offer .text p {
       font-size: 1rem;
       margin-bottom: 1.5rem;
+    }
+    .offer .text .btn {
+      background: var(--color-darkblue);
+      color: white;
+      padding: .75rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: opacity .3s;
+    }
+    .offer .text .btn:hover {
+      opacity: .8;
     }
     .offer .image {
       flex: 1 1 300px;
@@ -123,7 +151,7 @@
       text-align: center;
       font-size: 2rem;
       margin-bottom: 2rem;
-      color: var(--color-indigo);
+      color: var(--color-darkblue);
     }
     .services-grid {
       display: grid;
@@ -163,7 +191,7 @@
     .our-why h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
-      color: var(--color-indigo);
+      color: var(--color-darkblue);
     }
     .our-why p {
       max-width: 800px;
@@ -191,7 +219,7 @@
       text-align: center;
       font-size: 2rem;
       margin-bottom: 2rem;
-      color: var(--color-indigo);
+      color: var(--color-darkblue);
     }
     .testimonial {
       max-width: 600px;
@@ -211,7 +239,7 @@
     }
     .testimonial .author {
       font-weight: bold;
-      color: var(--color-indigo);
+      color: var(--color-darkblue);
     }
 
     /* ====== FOOTER ====== */
@@ -230,10 +258,16 @@
     footer .social a:hover {
       color: white;
     }
+    footer p {
+      margin-top: 1rem;
+      font-size: .9rem;
+    }
 
     /* ====== RESPONSIVE ====== */
     @media (max-width: 768px) {
       .offer { flex-direction: column; }
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
     }
   </style>
 </head>
@@ -241,32 +275,32 @@
 
   <!-- NAVBAR -->
   <nav>
-    <div class="logo">CIPPO Egypt</div>
+    <div class="logo">CIPPO مصر</div>
     <ul>
-      <li><a href="#">Start Here</a></li>
-      <li><a href="#">Plans & Pricing</a></li>
-      <li><a href="#">Join Our Team</a></li>
-      <li><a href="#">About Us</a></li>
-      <li><a href="#">Other Services</a></li>
+      <li><a href="#">ابدأ هنا</a></li>
+      <li><a href="#">الخطط والأسعار</a></li>
+      <li><a href="#">انضم لفريقنا</a></li>
+      <li><a href="#">من نحن</a></li>
+      <li><a href="#">خدمات أخرى</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <h1>ابدأ رحلتك معنا</h1>
-    <p>دعم شامل للأطفال ذوي الاحتياجات الخاصة عن بُعد بكل احترافية واهتمام.</p>
-    <a href="#" class="btn">Start Now</a>
+    <p>دعم احترافي للأطفال ذوي الاحتياجات الخاصة عن بُعد وبأعلى معايير الجودة.</p>
+    <a href="#" class="btn">ابدأ الآن 🚀</a>
   </section>
 
   <!-- WHAT WE OFFER -->
   <section class="offer">
     <div class="text">
-      <h2>ما نقدمه</h2>
-      <p>برامج فردية وجماعية في مجالات التطوير الأكاديمي والصحة النفسية والعلاج بالمرح.</p>
+      <h2>ما نقدّم</h2>
+      <p>برامج فردية وجماعية في مجالات التطوير الأكاديمي، الصحة النفسية، والعلاج المرحّي.</p>
       <a href="#" class="btn">اعرف أكثر</a>
     </div>
     <div class="image">
-      <img src="https://via.placeholder.com/500x350?text=Our+Offer" alt="Our Offer">
+      <img src="https://via.placeholder.com/500x350?text=خدماتنا" alt="خدماتنا">
     </div>
   </section>
 
@@ -276,23 +310,23 @@
     <div class="services-grid">
       <div class="service-card">
         <i class="fas fa-brain"></i>
-        <h3>Neurodiversity</h3>
-        <p>برامج لدعم الاحتياجات العصبية المتنوعة.</p>
+        <h3>دعم تنوّع عصبي</h3>
+        <p>برامج مخصّصة للاحتياجات العصبية المتنوعة.</p>
       </div>
       <div class="service-card">
         <i class="fas fa-heart"></i>
-        <h3>Mental Health</h3>
-        <p>جلسات استشارية لتعزيز الصحة النفسية.</p>
+        <h3>الصحة النفسية</h3>
+        <p>جلسات استشارية لتعزيز التوازن النفسي.</p>
       </div>
       <div class="service-card">
         <i class="fas fa-book"></i>
-        <h3>Academic Development</h3>
-        <p>خطة تعليمية فردية لتطوير الأداء الدراسي.</p>
+        <h3>التطوير الأكاديمي</h3>
+        <p>خطة تعليمية فردية لرفع الأداء الدراسي.</p>
       </div>
       <div class="service-card">
         <i class="fas fa-smile"></i>
-        <h3>Fun Therapy</h3>
-        <p>أنشطة ترفيهية وعلاجية في آنٍ واحد.</p>
+        <h3>العلاج المرحّي</h3>
+        <p>أنشطة ترفيهية وعلاجية للأطفال.</p>
       </div>
     </div>
   </section>
@@ -300,22 +334,22 @@
   <!-- OUR WHY -->
   <section class="our-why">
     <h2>لماذا نحن؟</h2>
-    <p>لأننا نؤمن بقدرات كل طفل ونعمل على تطويرها من خلال فريق من المختصين والمحترفين.</p>
-    <a href="#" class="btn-secondary">Learn More</a>
+    <p>لأننا نؤمن بأن لكل طفل حقّ الأنماء والتطوّر، ونعمل على ذلك بفريق من الخبراء.</p>
+    <a href="#" class="btn-secondary">تعرف على المزيد</a>
   </section>
 
   <!-- TESTIMONIALS -->
   <section class="testimonials">
     <h2>قصص نجاح</h2>
     <div class="testimonial">
-      <img src="https://via.placeholder.com/80" alt="User Photo">
-      <p>“بفضل CIPPO، تطورت مهارات ابني الأكاديمية والنفسية بشكل مذهل.”</p>
-      <div class="author">– أم أحمد</div>
+      <img src="https://via.placeholder.com/80" alt="صورة مستخدم">
+      <p>“بفضل فريق CIPPO، لاحظت تطوّرًا واضحًا في مهارات ابني الأكاديمية والنفسية.”</p>
+      
     </div>
     <div class="testimonial">
-      <img src="https://via.placeholder.com/80" alt="User Photo">
-      <p>“التواصل الدائم مع الفريق جعلنا نشعر بالأمان والدعم.”</p>
-      <div class="author">– والد مريم</div>
+      <img src="https://via.placeholder.com/80" alt="صورة مستخدم">
+      <p>“التواصل الدائم والدعم المستمر أشعرنا بالأمان والرضا.”</p>
+      
     </div>
   </section>
 
@@ -326,7 +360,7 @@
       <a href="#"><i class="fab fa-instagram"></i></a>
       <a href="#"><i class="fab fa-twitter"></i></a>
     </div>
-    <p>نبض. جميع الحقوق محفوظة.</p>
+    <p>© 2025 CIPPO Egypt. جميع الحقوق محفوظة.</p>
   </footer>
 
 </body>

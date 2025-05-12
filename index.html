@@ -31,16 +31,18 @@
 
     /* تدرجات منسقة */
     .gradient-1 {
-      background: linear-gradient( to bottom, var(--sky-blue), var(--navy) );
+      background: linear-gradient(to bottom, var(--sky-blue), var(--navy));
     }
     .gradient-2 {
-      background: linear-gradient( to bottom, var(--navy), var(--sky-blue) );
+      background: linear-gradient(to bottom, var(--navy), var(--sky-blue));
     }
 
     /* تنسيق عام للأقسام */
-    section {
-      padding: 4rem 2rem;
+    section, nav, footer {
       text-align: center;
+    }
+    nav, .hero, .offer, .services, .our-why, .testimonials, footer {
+      padding: 4rem 2rem;
     }
     a.btn, a.btn-secondary {
       display: inline-block;
@@ -51,14 +53,25 @@
       text-decoration: none;
       transition: opacity .3s;
     }
-    a.btn { background: var(--text-color); color: var(--navy); }
-    a.btn-secondary { background: var(--navy); color: var(--text-color); }
-    a.btn:hover, a.btn-secondary:hover { opacity: .8; }
+    a.btn {
+      background: var(--text-color);
+      color: var(--navy);
+    }
+    a.btn-secondary {
+      background: var(--navy);
+      color: var(--text-color);
+    }
+    a.btn:hover, a.btn-secondary:hover {
+      opacity: .8;
+    }
 
     /* NAVBAR */
     nav {
-      composes: gradient-1;
-      padding: 1rem 2rem;
+      background: none;
+    }
+    nav.gradient-1 {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -68,15 +81,15 @@
     nav a { color: var(--text-color); text-decoration: none; font-weight: 600; }
 
     /* HERO */
-    .hero {
-      composes: gradient-2;
+    .hero.gradient-2 {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
     }
     .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
     .hero p  { font-size: 1.2rem; margin-bottom: 2rem; }
 
     /* OFFER */
-    .offer {
-      composes: gradient-1;
+    .offer.gradient-1 {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -93,8 +106,9 @@
     }
 
     /* SERVICES */
-    .services {
-      composes: gradient-2;
+    .services.gradient-2 {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
     }
     .services h2 { font-size: 2rem; margin-bottom: 2rem; }
     .services-grid {
@@ -114,15 +128,17 @@
     .service-card p  { font-size: .95rem; }
 
     /* OUR WHY */
-    .our-why {
-      composes: gradient-1;
+    .our-why.gradient-1 {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
     }
     .our-why h2 { font-size: 2rem; margin-bottom: 1rem; }
     .our-why p  { max-width: 800px; margin: 0 auto 1.5rem; }
 
     /* TESTIMONIALS */
-    .testimonials {
-      composes: gradient-2;
+    .testimonials.gradient-2 {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
     }
     .testimonials h2 { font-size: 2rem; margin-bottom: 2rem; }
     .testimonial {
@@ -143,7 +159,8 @@
     /* FOOTER */
     footer {
       background: var(--navy);
-      padding: 2rem 1rem;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
     }
     footer .social a {
       color: var(--text-color);
@@ -165,7 +182,7 @@
 <body>
 
   <!-- NAVBAR -->
-  <nav>
+  <nav class="gradient-1">
     <div class="logo">CIPPO مصر</div>
     <ul>
       <li><a href="#">ابدأ هنا</a></li>
@@ -177,14 +194,14 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero gradient-2">
     <h1>ابدأ رحلتك معنا</h1>
     <p>دعم احترافي للأطفال ذوي الاحتياجات الخاصة عن بُعد وبأعلى معايير الجودة.</p>
     <a href="#" class="btn">ابدأ الآن 🚀</a>
   </section>
 
   <!-- WHAT WE OFFER -->
-  <section class="offer">
+  <section class="offer gradient-1">
     <div class="text">
       <h2>ما نقدّم</h2>
       <p>برامج فردية وجماعية في مجالات التطوير الأكاديمي، الصحة النفسية، والعلاج المرحّي.</p>
@@ -196,7 +213,7 @@
   </section>
 
   <!-- SERVICES GRID -->
-  <section class="services">
+  <section class="services gradient-2">
     <h2>اختر برنامجك</h2>
     <div class="services-grid">
       <div class="service-card">
@@ -223,14 +240,14 @@
   </section>
 
   <!-- OUR WHY -->
-  <section class="our-why">
+  <section class="our-why gradient-1">
     <h2>لماذا نحن؟</h2>
     <p>لأننا نؤمن بأن لكل طفل حقّ الأنماء والتطوّر، ونعمل على ذلك بفريق من الخبراء.</p>
     <a href="#" class="btn-secondary">تعرف على المزيد</a>
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="testimonials">
+  <section class="testimonials gradient-2">
     <h2>قصص نجاح</h2>
     <div class="testimonial">
       <img src="https://via.placeholder.com/80" alt="صورة مستخدم">
@@ -251,11 +268,12 @@
       <a href="#"><i class="fab fa-instagram"></i></a>
       <a href="#"><i class="fab fa-twitter"></i></a>
     </div>
-    <p>© 2025 CIPPO Egypt. جميع الحقوق محفوظة.</p>
+    <p>© 2025 . جميع الحقوق محفوظة.</p>
   </footer>
 
 </body>
 </html>
+
 
 
 

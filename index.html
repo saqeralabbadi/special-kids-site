@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>منصة CIPPO Egypt</title>
 
-  <!-- Font Awesome للأيقونات -->
+  <!-- Font Awesome -->
   <link
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     rel="stylesheet"
@@ -13,9 +13,9 @@
 
   <style>
     :root {
-      --color-darkblue: #00008B;
-      --color-indigo:   #4B0082;
-      --color-green:    #2FAF4E; /* الأخضر الجديد */
+      --sky-blue:  #87CEEB;
+      --navy:      #000080;
+      --text-color: white;
     }
 
     * {
@@ -25,235 +25,140 @@
     }
     body {
       font-family: 'Cairo', sans-serif;
-      color: white;
+      color: var(--text-color);
       line-height: 1.6;
     }
 
-    /* تدرج لوني موحد */
-    .gradient-bg {
-      background: linear-gradient(
-        135deg,
-        var(--color-darkblue),
-        var(--color-indigo),
-        var(--color-green)
-      );
-      color: white;
+    /* تدرجات منسقة */
+    .gradient-1 {
+      background: linear-gradient( to bottom, var(--sky-blue), var(--navy) );
+    }
+    .gradient-2 {
+      background: linear-gradient( to bottom, var(--navy), var(--sky-blue) );
     }
 
-    /* ====== NAVBAR ====== */
+    /* تنسيق عام للأقسام */
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    a.btn, a.btn-secondary {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: .75rem 2rem;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: opacity .3s;
+    }
+    a.btn { background: var(--text-color); color: var(--navy); }
+    a.btn-secondary { background: var(--navy); color: var(--text-color); }
+    a.btn:hover, a.btn-secondary:hover { opacity: .8; }
+
+    /* NAVBAR */
     nav {
-      composes: gradient-bg;
+      composes: gradient-1;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    nav .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: opacity .3s;
-    }
-    nav a:hover {
-      opacity: .8;
-    }
+    nav .logo { font-size: 1.5rem; font-weight: bold; }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav a { color: var(--text-color); text-decoration: none; font-weight: 600; }
 
-    /* ====== HERO ====== */
+    /* HERO */
     .hero {
-      composes: gradient-bg;
-      text-align: center;
-      padding: 5rem 2rem;
+      composes: gradient-2;
     }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-    .hero .btn {
-      background: white;
-      color: var(--color-darkblue);
-      padding: .75rem 2rem;
-      border-radius: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background .3s, box-shadow .3s;
-    }
-    .hero .btn:hover {
-      background: rgba(255,255,255,0.2);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .hero p  { font-size: 1.2rem; margin-bottom: 2rem; }
 
-    /* ====== OFFER ====== */
+    /* OFFER */
     .offer {
-      composes: gradient-bg;
+      composes: gradient-1;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      padding: 4rem 2rem;
       gap: 2rem;
     }
-    .offer .text h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .offer .text p {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .offer .text .btn {
-      background: white;
-      color: var(--color-darkblue);
-      padding: .75rem 2rem;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background .3s;
-    }
-    .offer .text .btn:hover {
-      background: rgba(255,255,255,0.2);
-    }
-    .offer .image img {
+    .offer .text { flex: 1 1 300px; }
+    .offer .text h2 { font-size: 2rem; margin-bottom: .5rem; }
+    .offer .text p  { font-size: 1rem; margin-bottom: 1rem; }
+    .offer .image { flex: 1 1 300px; }
+    .offer img {
       max-width: 100%;
       border-radius: 15px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
     }
 
-    /* ====== SERVICES GRID ====== */
+    /* SERVICES */
     .services {
-      composes: gradient-bg;
-      padding: 4rem 2rem;
+      composes: gradient-2;
     }
-    .services h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
+    .services h2 { font-size: 2rem; margin-bottom: 2rem; }
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.5rem;
     }
     .service-card {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255,255,255,0.2);
       padding: 1.5rem;
       border-radius: 15px;
-      text-align: center;
       transition: transform .3s;
     }
-    .service-card:hover {
-      transform: translateY(-5px);
-    }
-    .service-card i {
-      font-size: 2rem;
-      margin-bottom: .75rem;
-      color: white;
-    }
-    .service-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: .5rem;
-    }
-    .service-card p {
-      font-size: .95rem;
-    }
+    .service-card:hover { transform: translateY(-5px); }
+    .service-card i { font-size: 2rem; margin-bottom: .5rem; color: var(--text-color); }
+    .service-card h3 { margin-bottom: .5rem; }
+    .service-card p  { font-size: .95rem; }
 
-    /* ====== OUR WHY ====== */
+    /* OUR WHY */
     .our-why {
-      composes: gradient-bg;
-      text-align: center;
-      padding: 4rem 2rem;
+      composes: gradient-1;
     }
-    .our-why h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .our-why p {
-      max-width: 800px;
-      margin: 0 auto 1.5rem;
-    }
-    .our-why .btn-secondary {
-      background: white;
-      color: var(--color-darkblue);
-      padding: .75rem 2rem;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background .3s;
-    }
-    .our-why .btn-secondary:hover {
-      background: rgba(255,255,255,0.2);
-    }
+    .our-why h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .our-why p  { max-width: 800px; margin: 0 auto 1.5rem; }
 
-    /* ====== TESTIMONIALS ====== */
+    /* TESTIMONIALS */
     .testimonials {
-      composes: gradient-bg;
-      padding: 4rem 2rem;
+      composes: gradient-2;
     }
-    .testimonials h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
+    .testimonials h2 { font-size: 2rem; margin-bottom: 2rem; }
     .testimonial {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255,255,255,0.2);
       max-width: 600px;
       margin: 0 auto 2rem;
       padding: 1rem;
       border-radius: 15px;
-      text-align: center;
     }
     .testimonial img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
-    .testimonial p {
-      font-style: italic;
+      width: 80px; height: 80px;
+      border-radius: 50%; object-fit: cover;
       margin-bottom: .75rem;
     }
-    .testimonial .author {
-      font-weight: bold;
-    }
+    .testimonial p      { font-style: italic; margin-bottom: .5rem; }
+    .testimonial .author { font-weight: bold; }
 
-    /* ====== FOOTER ====== */
+    /* FOOTER */
     footer {
-      background: var(--color-darkblue);
-      text-align: center;
-      padding: 2rem;
+      background: var(--navy);
+      padding: 2rem 1rem;
     }
     footer .social a {
-      color: white;
+      color: var(--text-color);
       margin: 0 .5rem;
       font-size: 1.2rem;
       transition: opacity .3s;
     }
-    footer .social a:hover {
-      opacity: .8;
-    }
-    footer p {
-      margin-top: 1rem;
-      font-size: .9rem;
-      color: white;
-    }
+    footer .social a:hover { opacity: .8; }
+    footer p { margin-top: 1rem; font-size: .9rem; }
 
-    /* ====== RESPONSIVE ====== */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       .offer { flex-direction: column; }
       .hero h1 { font-size: 2rem; }
-      .hero p { font-size: 1rem; }
+      .hero p  { font-size: 1rem; }
     }
   </style>
 </head>
@@ -261,7 +166,7 @@
 
   <!-- NAVBAR -->
   <nav>
-    <div class="logo">نبض </div>
+    <div class="logo">CIPPO مصر</div>
     <ul>
       <li><a href="#">ابدأ هنا</a></li>
       <li><a href="#">الخطط والأسعار</a></li>
@@ -272,26 +177,26 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero gradient-bg">
+  <section class="hero">
     <h1>ابدأ رحلتك معنا</h1>
     <p>دعم احترافي للأطفال ذوي الاحتياجات الخاصة عن بُعد وبأعلى معايير الجودة.</p>
     <a href="#" class="btn">ابدأ الآن 🚀</a>
   </section>
 
   <!-- WHAT WE OFFER -->
-  <section class="offer gradient-bg">
+  <section class="offer">
     <div class="text">
       <h2>ما نقدّم</h2>
       <p>برامج فردية وجماعية في مجالات التطوير الأكاديمي، الصحة النفسية، والعلاج المرحّي.</p>
       <a href="#" class="btn">اعرف أكثر</a>
     </div>
-    
+    <div class="image">
       <img src="https://via.placeholder.com/500x350?text=خدماتنا" alt="خدماتنا">
     </div>
   </section>
 
   <!-- SERVICES GRID -->
-  <section class="services gradient-bg">
+  <section class="services">
     <h2>اختر برنامجك</h2>
     <div class="services-grid">
       <div class="service-card">
@@ -318,14 +223,14 @@
   </section>
 
   <!-- OUR WHY -->
-  <section class="our-why gradient-bg">
+  <section class="our-why">
     <h2>لماذا نحن؟</h2>
     <p>لأننا نؤمن بأن لكل طفل حقّ الأنماء والتطوّر، ونعمل على ذلك بفريق من الخبراء.</p>
     <a href="#" class="btn-secondary">تعرف على المزيد</a>
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="testimonials gradient-bg">
+  <section class="testimonials">
     <h2>قصص نجاح</h2>
     <div class="testimonial">
       <img src="https://via.placeholder.com/80" alt="صورة مستخدم">

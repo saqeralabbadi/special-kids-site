@@ -62,18 +62,36 @@
       background: rgba(255, 255, 255, 0.15);
       padding: 2rem;
       border-radius: 15px;
-      max-width: 500px;
+      max-width: 600px;
       width: 100%;
       margin-bottom: 2rem;
     }
 
-    form input, form textarea {
+    form input, form textarea, form select {
       width: 100%;
       padding: 0.75rem;
       margin-bottom: 1rem;
       border: none;
       border-radius: 10px;
       font-family: 'Cairo', sans-serif;
+    }
+
+    form label {
+      font-weight: bold;
+      display: block;
+      text-align: right;
+      margin-bottom: .25rem;
+    }
+
+    .radio-group {
+      display: flex;
+      justify-content: start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .radio-group label {
+      font-weight: normal;
     }
 
     form button {
@@ -98,10 +116,33 @@
   <p>املأ النموذج التالي وسيتواصل معك أحد أخصائيينا في أقرب وقت.</p>
 
   <form>
-    <input type="text" placeholder="الاسم الكامل" required />
-    <input type="email" placeholder="البريد الإلكتروني" required />
-    <input type="tel" placeholder="رقم الهاتف" />
-    <textarea placeholder="أخبرنا أكثر عن احتياجك..." rows="4"></textarea>
+    <label>الاسم الكامل</label>
+    <input type="text" placeholder="مثال: أحمد محمد" required />
+
+    <label>البريد الإلكتروني</label>
+    <input type="email" placeholder="email@example.com" required />
+
+    <label>رقم الهاتف</label>
+    <input type="tel" placeholder="05XXXXXXXX" />
+
+    <label>نوع الدعم المطلوب</label>
+    <select>
+      <option value="">اختر من القائمة</option>
+      <option>دعم نفسي</option>
+      <option>علاج مرحّي</option>
+      <option>تطوير أكاديمي</option>
+      <option>تقييم شامل</option>
+    </select>
+
+    <label>هل لديك تقرير تشخيصي؟</label>
+    <div class="radio-group">
+      <label><input type="radio" name="report" value="نعم" /> نعم</label>
+      <label><input type="radio" name="report" value="لا" /> لا</label>
+    </div>
+
+    <label>تفاصيل إضافية</label>
+    <textarea placeholder="أخبرنا أكثر عن حالتك أو احتياجك..." rows="4"></textarea>
+
     <button type="submit">إرسال</button>
   </form>
 
@@ -109,4 +150,5 @@
 
 </body>
 </html>
+
 

@@ -1,50 +1,80 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>استبيان نبض</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --sky-blue:  #87CEEB;
+      --navy:      #000080;
+      --text-color: white;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom, var(--sky-blue), var(--navy));
+      color: var(--text-color);
       padding: 2rem;
-      background: #f0f8ff;
-      color: #333;
     }
+
     h1 {
       text-align: center;
-      color: #000080;
+      margin-bottom: 2rem;
+      font-size: 2rem;
     }
+
     form {
+      background: rgba(255,255,255,0.15);
       max-width: 600px;
-      margin: 2rem auto;
-      background: #fff;
+      margin: 0 auto;
       padding: 2rem;
       border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
+
     label {
       display: block;
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
       font-weight: bold;
     }
-    input, textarea, select {
+
+    input, select, textarea {
       width: 100%;
-      padding: .75rem;
-      margin-bottom: 1.5rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    button {
-      background: #000080;
-      color: white;
-      border: none;
-      padding: 0.75rem 2rem;
+      padding: 0.75rem;
       border-radius: 10px;
+      border: none;
+      margin-bottom: 1.5rem;
+      font-family: inherit;
+    }
+
+    button {
+      background-color: var(--text-color);
+      color: var(--navy);
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
       font-size: 1rem;
       cursor: pointer;
+      transition: opacity 0.3s;
     }
+
     button:hover {
-      background: #004080;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -61,7 +91,7 @@
       <option value="10plus">أكثر من 10 سنوات</option>
     </select>
 
-    <label for="q2">هل سبق وتم تشخيص الطفل من قبل مختص؟</label>
+    <label for="q2">هل سبق وتم تشخيص الطفل؟</label>
     <select id="q2" name="diagnosis">
       <option value="">اختر</option>
       <option value="yes">نعم</option>
@@ -83,6 +113,7 @@
 
 </body>
 </html>
+
 
 
 

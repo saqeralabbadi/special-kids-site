@@ -1,154 +1,88 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ابدأ الآن - نبض</title>
-
-  <!-- Font Awesome -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    rel="stylesheet"
-  />
-
+  <meta charset="UTF-8">
+  <title>استبيان نبض</title>
   <style>
-    :root {
-      --sky-blue:  #87CEEB;
-      --navy:      #000080;
-      --text-color: white;
-    }
-
     body {
-      margin: 0;
       font-family: 'Cairo', sans-serif;
-      color: var(--text-color);
-      background: linear-gradient(to bottom, var(--sky-blue), var(--navy));
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
       padding: 2rem;
+      background: #f0f8ff;
+      color: #333;
     }
-
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      text-align: center;
+      color: #000080;
     }
-
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      max-width: 600px;
-    }
-
-    a.btn {
-      display: inline-block;
-      background: var(--text-color);
-      color: var(--navy);
-      padding: .75rem 2rem;
-      border-radius: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: opacity .3s;
-    }
-
-    a.btn:hover {
-      opacity: 0.8;
-    }
-
     form {
-      background: rgba(255, 255, 255, 0.15);
+      max-width: 600px;
+      margin: 2rem auto;
+      background: #fff;
       padding: 2rem;
       border-radius: 15px;
-      max-width: 600px;
-      width: 100%;
-      margin-bottom: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
-    form input, form textarea, form select {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 10px;
-      font-family: 'Cairo', sans-serif;
-    }
-
-    form label {
-      font-weight: bold;
+    label {
       display: block;
-      text-align: right;
-      margin-bottom: .25rem;
+      margin-bottom: .5rem;
+      font-weight: bold;
     }
-
-    .radio-group {
-      display: flex;
-      justify-content: start;
-      gap: 1rem;
-      margin-bottom: 1rem;
+    input, textarea, select {
+      width: 100%;
+      padding: .75rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
     }
-
-    .radio-group label {
-      font-weight: normal;
-    }
-
-    form button {
-      background: var(--navy);
-      color: var(--text-color);
+    button {
+      background: #000080;
+      color: white;
       border: none;
       padding: 0.75rem 2rem;
-      border-radius: 30px;
-      font-weight: bold;
+      border-radius: 10px;
+      font-size: 1rem;
       cursor: pointer;
-      transition: opacity .3s;
     }
-
-    form button:hover {
-      opacity: 0.85;
+    button:hover {
+      background: #004080;
     }
   </style>
 </head>
 <body>
 
-  <h1>ابدأ رحلتك مع نبض</h1>
-  <p>املأ النموذج التالي وسيتواصل معك أحد أخصائيينا في أقرب وقت.</p>
+  <h1>استبيان نبض</h1>
 
-  <form>
-    <label>الاسم الكامل</label>
-    <input type="text" placeholder="مثال: أحمد محمد" required />
-
-    <label>البريد الإلكتروني</label>
-    <input type="email" placeholder="email@example.com" required />
-
-    <label>رقم الهاتف</label>
-    <input type="tel" placeholder="05XXXXXXXX" />
-
-    <label>نوع الدعم المطلوب</label>
-    <select>
-      <option value="">اختر من القائمة</option>
-      <option>دعم نفسي</option>
-      <option>علاج مرحّي</option>
-      <option>تطوير أكاديمي</option>
-      <option>تقييم شامل</option>
+  <form action="#" method="post">
+    <label for="q1">كم عمر الطفل؟</label>
+    <select id="q1" name="age">
+      <option value="">اختر</option>
+      <option value="under5">أقل من 5 سنوات</option>
+      <option value="5-10">من 5 إلى 10 سنوات</option>
+      <option value="10plus">أكثر من 10 سنوات</option>
     </select>
 
-    <label>هل لديك تقرير تشخيصي؟</label>
-    <div class="radio-group">
-      <label><input type="radio" name="report" value="نعم" /> نعم</label>
-      <label><input type="radio" name="report" value="لا" /> لا</label>
-    </div>
+    <label for="q2">هل سبق وتم تشخيص الطفل من قبل مختص؟</label>
+    <select id="q2" name="diagnosis">
+      <option value="">اختر</option>
+      <option value="yes">نعم</option>
+      <option value="no">لا</option>
+    </select>
 
-    <label>تفاصيل إضافية</label>
-    <textarea placeholder="أخبرنا أكثر عن حالتك أو احتياجك..." rows="4"></textarea>
+    <label for="q3">ما نوع الدعم الذي تبحث عنه؟</label>
+    <textarea id="q3" name="support" rows="4" placeholder="مثال: علاج سلوكي، دعم أكاديمي، علاج نفسي..."></textarea>
+
+    <label for="q4">هل ترغب بالتواصل مع أحد الأخصائيين؟</label>
+    <select id="q4" name="contact">
+      <option value="">اختر</option>
+      <option value="yes">نعم</option>
+      <option value="no">لا</option>
+    </select>
 
     <button type="submit">إرسال</button>
   </form>
 
-  <a href="index.html" class="btn"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
-
 </body>
 </html>
+
 
 

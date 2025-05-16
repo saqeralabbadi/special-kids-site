@@ -108,7 +108,7 @@
       <select id="workType" name="workType" required>
         <option value="" disabled selected>اختر نوع الدوام</option>
         <option value="دوام كامل">دوام كامل</option>
-        <option value="مستقل">مستقل</option>
+        <option value="جزئي">جزئي</option>
       </select>
 
       <label for="about">اخبرنا عن نفسك</label>
@@ -145,14 +145,9 @@
       fetch(url)
         .then(response => response.json())
         .then(data => {
-          // لا نظهر أي رسالة للمستخدم (حسب طلبك)
-          // ممكن إضافة هنا رسالة تأكيد داخل الصفحة إذا أردت لاحقاً
-          // مثلا: alert('تم الإرسال');
-          // لكن حالياً لا شيء
           this.reset();
         })
         .catch(error => {
-          // يمكن إضافة هنا رسالة خطأ إذا أردت
           console.error('Error:', error);
         });
     });

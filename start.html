@@ -86,6 +86,9 @@
     <label for="name">اسم الطفل:</label>
     <input type="text" id="name" name="name" required placeholder="ادخل اسم الطفل" />
 
+    <label for="phone">رقم هاتف المستخدم:</label>
+    <input type="tel" id="phone" name="phone" required placeholder="ادخل رقم هاتفك" pattern="[0-9+]{6,15}" />
+
     <label for="age">كم عمر الطفل؟</label>
     <select id="age" name="age" required>
       <option value="">اختر</option>
@@ -138,6 +141,7 @@
     e.preventDefault();
 
     const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
     const age = document.getElementById('age').value;
     const diagnosis = document.getElementById('diagnosis').value;
     const support = document.getElementById('support').value.trim();
@@ -146,6 +150,7 @@
     const message = 
       `استبيان نبض:\n` +
       `اسم الطفل: ${name}\n` +
+      `رقم هاتف المستخدم: ${phone}\n` +
       `العمر: ${age}\n` +
       `تم تشخيصه: ${diagnosis}\n` +
       `نوع الدعم: ${support}\n` +

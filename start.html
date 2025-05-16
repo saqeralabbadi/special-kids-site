@@ -82,38 +82,59 @@
 
   <h1>استبيان نبض</h1>
 
-  <form action="#" method="post">
+  <form onsubmit="sendToWhatsApp(); return false;">
+    <label for="child-name">اسم الطفل</label>
+    <input type="text" id="child-name" name="child_name" placeholder="أدخل اسم الطفل" required />
+
     <label for="q1">كم عمر الطفل؟</label>
-    <select id="q1" name="age">
+    <select id="q1" name="age" required>
       <option value="">اختر</option>
-      <option value="under5">أقل من 5 سنوات</option>
-      <option value="5-10">من 5 إلى 10 سنوات</option>
-      <option value="10plus">أكثر من 10 سنوات</option>
+      <option value="أقل من 5 سنوات">أقل من 5 سنوات</option>
+      <option value="من 5 إلى 10 سنوات">من 5 إلى 10 سنوات</option>
+      <option value="أكثر من 10 سنوات">أكثر من 10 سنوات</option>
     </select>
 
     <label for="q2">هل سبق وتم تشخيص الطفل؟</label>
-    <select id="q2" name="diagnosis">
+    <select id="q2" name="diagnosis" required>
       <option value="">اختر</option>
-      <option value="yes">نعم</option>
-      <option value="no">لا</option>
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
     </select>
 
     <label for="q3">ما نوع الدعم الذي تبحث عنه؟</label>
-    <textarea id="q3" name="support" rows="4" placeholder="مثال: علاج سلوكي، دعم أكاديمي، علاج نفسي..."></textarea>
+    <textarea id="q3" name="support" rows="4" placeholder="مثال: علاج سلوكي، دعم أكاديمي، علاج نفسي..." required></textarea>
 
     <label for="q4">هل ترغب بالتواصل مع أحد الأخصائيين؟</label>
-    <select id="q4" name="contact">
+    <select id="q4" name="contact" required>
       <option value="">اختر</option>
-      <option value="yes">نعم</option>
-      <option value="no">لا</option>
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
     </select>
 
     <button type="submit">إرسال</button>
   </form>
 
+  <script>
+    function sendToWhatsApp() {
+      const name     = document.getElementById("child-name").value.trim();
+      const age      = document.getElementById("q1").value;
+      const diagnosis= document.getElementById("q2").value;
+      const support  = document.getElementById("q3").value.trim();
+      const contact  = document.getElementById("q4").value;
+
+      const message = `استبيان نبض:%0A` +
+                      `👶 اسم الطفل: ${name}%0A` +
+                      `📅 العمر: ${age}%0A` +
+                      `🩺 تم التشخيص: ${diagnosis}%0A` +
+                      `💬 نوع الدعم: ${support}%0A` +
+                      `📞 تواصل مع أخصائي: ${contact}`;
+
+      const phoneNumber = "962776722803";
+      window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+    }
+  </script>
+
 </body>
 </html>
-
-
 
 

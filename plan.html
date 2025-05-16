@@ -2,13 +2,15 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <title>انضم إلى فريقنا - تصميم مثل cippoegypt</title>
+  <title>انضم إلى فريقنا - استبيان</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet" />
   <style>
-    /* Reset & base */
+    /* Reset */
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
@@ -18,186 +20,219 @@
       direction: rtl;
       color: #222;
       min-height: 100vh;
+      position: relative;
+      padding: 40px 20px;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 40px 20px;
     }
 
-    /* التراكب الغامق */
+    /* تراكب غامق */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background-color: rgba(14, 27, 48, 0.8);
+      background-color: rgba(14, 27, 48, 0.85);
       z-index: 0;
     }
 
-    .wrapper {
+    .container {
       position: relative;
-      max-width: 1200px;
+      max-width: 1100px;
       width: 100%;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 14px;
+      padding: 40px 35px;
+      box-shadow: 0 15px 30px rgb(10 35 68 / 0.3);
       z-index: 1;
     }
 
-    /* العنوان */
     h1 {
       font-weight: 700;
-      color: white;
       font-size: 36px;
+      color: #0e1b30;
+      text-align: center;
       margin-bottom: 40px;
-      text-align: center;
-      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+      letter-spacing: 1px;
     }
 
-    /* شبكة البطاقات */
-    .cards {
+    form {
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-      gap: 25px;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px 40px;
+      direction: rtl;
     }
 
-    /* بطاقة */
-    .card {
-      background-color: #1a2a4a;
-      border-radius: 14px;
-      padding: 30px 25px;
-      box-shadow:
-        0 8px 20px rgb(10 35 68 / 0.4),
-        inset 0 0 0 2px rgb(33 66 114 / 0.8);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: default;
-    }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow:
-        0 15px 30px rgb(10 35 68 / 0.6),
-        inset 0 0 0 2px #4ea8f6;
-    }
-
-    /* اسم البطاقة */
-    .card h2 {
-      font-weight: 700;
-      font-size: 26px;
-      margin-bottom: 18px;
-      color: #7db1ff;
-      text-align: center;
-      text-shadow: 0 0 8px #5a84c9;
-    }
-
-    /* سعر العملة */
-    .currency {
-      font-size: 16px;
+    /* الخانات */
+    label {
+      display: block;
+      margin-bottom: 8px;
       font-weight: 600;
-      color: #a5c5ff;
-      margin-bottom: 10px;
-      text-align: center;
+      color: #0e1b30;
+      font-size: 16px;
     }
 
-    /* السعر */
-    .price {
-      font-weight: 800;
-      font-size: 48px;
-      color: #4ea8f6;
-      margin-bottom: 20px;
-      text-align: center;
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1.5px solid #0e1b30;
+      border-radius: 10px;
       font-family: 'Cairo', sans-serif;
-    }
-
-    /* وصف البطاقة */
-    .description {
-      font-size: 15px;
-      line-height: 1.5;
-      margin-bottom: 30px;
-      text-align: center;
-      color: #a9b9db;
-      min-height: 90px;
-    }
-
-    /* قائمة المميزات */
-    ul.features {
-      list-style: none;
-      margin-bottom: 30px;
-      padding-left: 0;
-    }
-    ul.features li {
-      position: relative;
-      padding-right: 30px;
-      margin-bottom: 12px;
       font-size: 14px;
-      color: #bbcef8;
+      resize: none;
+      transition: border-color 0.3s ease;
+      color: #0e1b30;
+      background: white;
     }
-    ul.features li::before {
-      content: '✔';
-      position: absolute;
-      right: 0;
-      color: #4ea8f6;
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #3f4c7b;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 120px;
+    }
+
+    /* خانة دوام كامل / مستقل */
+    .full-width {
+      grid-column: span 2;
+    }
+
+    /* زر الإرسال */
+    button {
+      grid-column: span 2;
+      padding: 15px 0;
+      background-color: #0e1b30;
+      color: white;
+      font-size: 18px;
       font-weight: 700;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
     }
 
-    /* إزالة زر الاشتراك */
+    button:hover {
+      background-color: #3f4c7b;
+    }
 
+    /* رسالة تأكيد مرئية صغيرة */
+    .confirmation-message {
+      grid-column: span 2;
+      text-align: center;
+      font-size: 15px;
+      color: green;
+      margin-top: 15px;
+      display: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 700px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+      .full-width {
+        grid-column: span 1;
+      }
+      button {
+        grid-column: span 1;
+      }
+      .confirmation-message {
+        grid-column: span 1;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <h1>خطط الاشتراك والأسعار</h1>
-    <div class="cards">
-
-      <div class="card">
-        <h2>الأساسية</h2>
-        <div class="currency">دينار أردني</div>
-        <div class="price">10</div>
-        <div class="description">خطة مناسبة للمبتدئين مع ميزات أساسية تساعدك على البدء بسهولة.</div>
-        <ul class="features">
-          <li>دعم محدود</li>
-          <li>الوصول إلى الموارد الأساسية</li>
-          <li>دورات تعليمية عبر الإنترنت</li>
-        </ul>
+  <div class="container">
+    <h1>انضم إلى فريقنا</h1>
+    <form id="joinForm">
+      <div>
+        <label for="fullName">الاسم الكامل</label>
+        <input type="text" id="fullName" name="fullName" required />
       </div>
 
-      <div class="card">
-        <h2>القياسية</h2>
-        <div class="currency">دينار أردني</div>
-        <div class="price">25</div>
-        <div class="description">خطة متكاملة تلبي حاجات المستخدم المتوسط وتوفر دعمًا أكبر.</div>
-        <ul class="features">
-          <li>دعم فني متقدم</li>
-          <li>الوصول إلى محتوى حصري</li>
-          <li>استشارات شهرية</li>
-        </ul>
+      <div>
+        <label for="phone">رقم الهاتف</label>
+        <input type="tel" id="phone" name="phone" required pattern="[\d\s\+\-]+" />
       </div>
 
-      <div class="card">
-        <h2>Pro</h2>
-        <div class="currency">دينار أردني</div>
-        <div class="price">50</div>
-        <div class="description">خطة احترافية توفر جميع الأدوات اللازمة للمحترفين.</div>
-        <ul class="features">
-          <li>دعم مباشر 24/7</li>
-          <li>تحديثات مستمرة</li>
-          <li>تحليلات متقدمة</li>
-        </ul>
+      <div>
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email" name="email" required />
       </div>
 
-      <div class="card">
-        <h2>Pro+</h2>
-        <div class="currency">دينار أردني</div>
-        <div class="price">100</div>
-        <div class="description">الخطة الأفضل للمؤسسات والشركات مع ميزات متميزة.</div>
-        <ul class="features">
-          <li>دعم مخصص</li>
-          <li>تكامل مع الأنظمة الأخرى</li>
-          <li>تقارير مفصلة</li>
-        </ul>
+      <div>
+        <label for="jobType">نوع العمل</label>
+        <select id="jobType" name="jobType" required>
+          <option value="" disabled selected>اختر</option>
+          <option value="full-time">دوام كامل</option>
+          <option value="freelance">مستقل</option>
+        </select>
       </div>
 
-    </div>
+      <div class="full-width">
+        <label for="about">اخبرنا عن نفسك</label>
+        <textarea id="about" name="about" placeholder="اكتب نبذة عن خبراتك، مهاراتك، وأهدافك..." required></textarea>
+      </div>
+
+      <button type="submit">إرسال</button>
+      <div class="confirmation-message" id="confirmationMessage">تم إرسال بياناتك بنجاح!</div>
+    </form>
   </div>
+
+  <script>
+    const form = document.getElementById('joinForm');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const data = {
+        الاسم: form.fullName.value.trim(),
+        الهاتف: form.phone.value.trim(),
+        البريد_الإلكتروني: form.email.value.trim(),
+        نوع_العمل: form.jobType.value,
+        عن_النفس: form.about.value.trim(),
+      };
+
+      const telegramBotToken = '7892141496:AAHJm_IP7rXtVqrOQQtm9flEg6iCn5K9g3c'; // استبدلها بتوكن بوتك
+      const chatId = '6345723153'; // استبدلها بـ chat_id الخاص بك
+
+      // تكوين رسالة نصية بإرسال البيانات
+      const message = Object.entries(data)
+        .map(([key, val]) => `*${key}:* ${val}`)
+        .join('\n');
+
+      const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&parse_mode=Markdown&text=${encodeURIComponent(message)}`;
+
+      try {
+        const response = await fetch(url);
+        if (response.ok) {
+          confirmationMessage.style.display = 'block';
+          form.reset();
+          setTimeout(() => {
+            confirmationMessage.style.display = 'none';
+          }, 4000);
+        } else {
+          alert('حدث خطأ أثناء الإرسال. حاول مرة أخرى.');
+        }
+      } catch (error) {
+        alert('حدث خطأ في الاتصال بالإنترنت.');
+      }
+    });
+  </script>
 </body>
 </html>
+
 

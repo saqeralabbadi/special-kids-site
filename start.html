@@ -4,41 +4,83 @@
   <meta charset="UTF-8" />
   <title>استبيان نبض</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --sky-blue:  #87CEEB;
+      --navy:      #000080;
+      --text-color: white;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      padding: 1rem;
-      background: #f0f0f0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom, var(--sky-blue), var(--navy));
+      color: var(--text-color);
+      padding: 2rem;
     }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+
     form {
-      max-width: 400px;
-      margin: auto;
-      background: white;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.15);
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
-    input, select, button, textarea {
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
       width: 100%;
-      padding: 0.7rem;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-    button {
-      background-color: #0088cc;
-      color: white;
+      padding: 0.75rem;
+      border-radius: 10px;
       border: none;
-      cursor: pointer;
-      border-radius: 5px;
+      margin-bottom: 1.5rem;
+      font-family: inherit;
     }
+
+    button {
+      background-color: var(--text-color);
+      color: var(--navy);
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
     button:hover {
-      background-color: #006699;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h2 style="text-align:center;">استبيان نبض</h2>
+  <h1>استبيان نبض</h1>
 
   <form id="surveyForm">
     <label for="name">اسم الطفل:</label>
@@ -60,7 +102,7 @@
     </select>
 
     <label for="support">ما نوع الدعم الذي تبحث عنه؟</label>
-    <textarea id="support" name="support" rows="3" placeholder="مثال: علاج سلوكي، دعم أكاديمي، علاج نفسي..." required></textarea>
+    <textarea id="support" name="support" rows="4" placeholder="مثال: علاج سلوكي، دعم أكاديمي، علاج نفسي..." required></textarea>
 
     <label for="contact">هل ترغب بالتواصل مع أحد الأخصائيين؟</label>
     <select id="contact" name="contact" required>
@@ -73,49 +115,66 @@
   </form>
 
 <script>
-const token = '7892141496:AAHJm_IP7rXtVqrOQQtm9flEg6iCn5K9g3c';
-const chatId = '6345723153';
+  const token = '7892141496:AAHJm_IP7rXtVqrOQQtm9flEg6iCn5K9g3c';
+  const chatId = '6345723153';
 
-document.getElementById('surveyForm').addEventListener('submit', function(e){
-  e.preventDefault();
+  // إنشاء عنصر رسالة نجاح
+  const successMsg = document.createElement('div');
+  successMsg.style.position = 'fixed';
+  successMsg.style.top = '1rem';
+  successMsg.style.left = '50%';
+  successMsg.style.transform = 'translateX(-50%)';
+  successMsg.style.backgroundColor = '#4CAF50';
+  successMsg.style.color = 'white';
+  successMsg.style.padding = '1rem 2rem';
+  successMsg.style.borderRadius = '8px';
+  successMsg.style.boxShadow = '0 0 10px rgba(0,0,0,0.2)';
+  successMsg.style.display = 'none';
+  successMsg.style.zIndex = '1000';
+  successMsg.textContent = 'تم إرسال البيانات بنجاح!';
+  document.body.appendChild(successMsg);
 
-  const name = document.getElementById('name').value.trim();
-  const age = document.getElementById('age').value;
-  const diagnosis = document.getElementById('diagnosis').value;
-  const support = document.getElementById('support').value.trim();
-  const contact = document.getElementById('contact').value;
+  document.getElementById('surveyForm').addEventListener('submit', function(e){
+    e.preventDefault();
 
-  const message = 
-    `استبيان نبض:\n` +
-    `اسم الطفل: ${name}\n` +
-    `العمر: ${age}\n` +
-    `تم تشخيصه: ${diagnosis}\n` +
-    `نوع الدعم: ${support}\n` +
-    `رغبة بالتواصل: ${contact}`;
+    const name = document.getElementById('name').value.trim();
+    const age = document.getElementById('age').value;
+    const diagnosis = document.getElementById('diagnosis').value;
+    const support = document.getElementById('support').value.trim();
+    const contact = document.getElementById('contact').value;
 
-  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      chat_id: chatId,
-      text: message
+    const message = 
+      `استبيان نبض:\n` +
+      `اسم الطفل: ${name}\n` +
+      `العمر: ${age}\n` +
+      `تم تشخيصه: ${diagnosis}\n` +
+      `نوع الدعم: ${support}\n` +
+      `رغبة بالتواصل: ${contact}`;
+
+    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message
+      })
     })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if(data.ok){
-      alert('تم إرسال البيانات إلى تليجرام بنجاح!');
-      e.target.reset();
-    } else {
-      alert('فشل في إرسال البيانات، حاول مرة أخرى.');
-      console.error(data);
-    }
-  })
-  .catch(err => {
-    alert('حدث خطأ في الاتصال.');
-    console.error(err);
+    .then(res => res.json())
+    .then(data => {
+      if(data.ok){
+        this.reset();
+        successMsg.style.display = 'block';
+        setTimeout(() => {
+          successMsg.style.display = 'none';
+        }, 3000);
+      } else {
+        console.error('فشل في إرسال البيانات:', data);
+      }
+    })
+    .catch(err => {
+      console.error('حدث خطأ في الاتصال:', err);
+    });
   });
-});
 </script>
 
 </body>

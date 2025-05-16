@@ -4,120 +4,139 @@
   <meta charset="UTF-8" />
   <title>انضم إلى فريقنا</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Cairo', sans-serif;
-      background-color: #f2f2f2;
-      color: #333;
-      padding: 2rem;
+      background-color: #f5f6fa;
+      margin: 0;
+      padding: 2rem 1rem;
+      color: #2c3e50;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
     }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 2rem;
-      color: #001f3f;
-    }
-
-    form {
-      background-color: white;
-      padding: 2rem;
-      border-radius: 12px;
+    .container {
+      background: white;
       max-width: 600px;
-      margin: auto;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    label {
-      display: block;
-      margin-bottom: 0.3rem;
-      font-weight: bold;
-      color: #001f3f;
-    }
-
-    input, select, textarea {
       width: 100%;
-      padding: 0.7rem;
-      margin-bottom: 1.2rem;
-      border: 1px solid #001f3f;
-      border-radius: 6px;
-      font-family: inherit;
-      font-size: 1rem;
-      background-color: #fff;
-      color: #333;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgb(0 0 0 / 0.1);
+      padding: 40px 35px 50px;
+      box-sizing: border-box;
     }
-
-    button {
-      background-color: #001f3f;
+    h1 {
+      font-weight: 700;
+      font-size: 28px;
+      margin-bottom: 25px;
+      text-align: center;
+      color: #34495e;
+    }
+    form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #34495e;
+      font-size: 14px;
+    }
+    form input[type="text"],
+    form input[type="tel"],
+    form input[type="email"],
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: 1.5px solid #34495e;
+      border-radius: 8px;
+      font-size: 15px;
+      color: #2c3e50;
+      transition: border-color 0.3s;
+      resize: vertical;
+    }
+    form input[type="text"]:focus,
+    form input[type="tel"]:focus,
+    form input[type="email"]:focus,
+    form select:focus,
+    form textarea:focus {
+      border-color: #2980b9;
+      outline: none;
+    }
+    button[type="submit"] {
+      background-color: #34495e;
       color: white;
-      padding: 0.8rem 2rem;
       border: none;
       border-radius: 8px;
-      font-size: 1rem;
-      font-weight: bold;
+      padding: 14px;
+      font-size: 17px;
+      font-weight: 700;
       cursor: pointer;
       width: 100%;
       transition: background-color 0.3s;
     }
-
-    button:hover {
-      background-color: #003366;
+    button[type="submit"]:hover {
+      background-color: #2c3e50;
     }
-
     #confirmation {
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #27ae60;
       text-align: center;
-      color: green;
-      font-weight: bold;
-      margin-top: 1rem;
       display: none;
     }
   </style>
 </head>
 <body>
 
-  <h1>انضم إلى فريقنا</h1>
+  <div class="container">
+    <h1>انضم إلى فريقنا</h1>
+    <form id="joinForm">
+      <label for="fullName">الاسم الكامل</label>
+      <input type="text" id="fullName" name="fullName" required placeholder="أدخل اسمك الكامل" />
 
-  <form id="joinForm">
-    <label for="fullName">الاسم الكامل</label>
-    <input type="text" id="fullName" name="fullName" required>
+      <label for="phone">رقم الهاتف</label>
+      <input type="tel" id="phone" name="phone" required placeholder="مثال: 0771234567" />
 
-    <label for="phone">رقم الهاتف</label>
-    <input type="tel" id="phone" name="phone" required>
+      <label for="email">البريد الإلكتروني</label>
+      <input type="email" id="email" name="email" required placeholder="example@mail.com" />
 
-    <label for="email">البريد الإلكتروني</label>
-    <input type="email" id="email" name="email" required>
+      <label for="workType">نوع العمل</label>
+      <select id="workType" name="workType" required>
+        <option value="" disabled selected>اختر نوع العمل</option>
+        <option value="دوام كامل">دوام كامل</option>
+        <option value="مستقل">مستقل</option>
+      </select>
 
-    <label for="workType">نوع العمل</label>
-    <select id="workType" name="workType" required>
-      <option value="">اختر</option>
-      <option value="دوام كامل">دوام كامل</option>
-      <option value="مستقل">مستقل</option>
-    </select>
+      <label for="about">اخبرنا عن نفسك</label>
+      <textarea id="about" name="about" rows="4" placeholder="تحدث عن تخصصك، خبراتك، مهاراتك..."></textarea>
 
-    <label for="about">اخبرنا عن نفسك</label>
-    <textarea id="about" name="about" rows="4" placeholder="مثال: تخصصي، خبرتي، المهارات..."></textarea>
-
-    <button type="submit">إرسال</button>
-    <div id="confirmation">✔ تم إرسال المعلومات بنجاح</div>
-  </form>
+      <button type="submit">إرسال</button>
+      <div id="confirmation">✔ تم إرسال المعلومات بنجاح</div>
+    </form>
+  </div>
 
   <script>
-    document.getElementById("joinForm").addEventListener("submit", async function (e) {
+    const form = document.getElementById('joinForm');
+    const confirmation = document.getElementById('confirmation');
+
+    form.addEventListener('submit', async function(e) {
       e.preventDefault();
 
-      const formData = new FormData(e.target);
-      const fullName = formData.get("fullName");
-      const phone = formData.get("phone");
-      const email = formData.get("email");
-      const workType = formData.get("workType");
-      const about = formData.get("about");
+      const formData = new FormData(form);
+      const fullName = formData.get('fullName');
+      const phone = formData.get('phone');
+      const email = formData.get('email');
+      const workType = formData.get('workType');
+      const about = formData.get('about');
 
       const message = `
 📥 طلب انضمام جديد:
 
 👤 الاسم الكامل: ${fullName}
 📞 الهاتف: ${phone}
-📧 البريد: ${email}
+📧 البريد الإلكتروني: ${email}
 💼 نوع العمل: ${workType}
 📝 عن المتقدم:
 ${about}
@@ -139,10 +158,16 @@ ${about}
           })
         });
 
-        document.getElementById("confirmation").style.display = "block";
-        e.target.reset();
-      } catch (err) {
-        console.error("Telegram Error:", err);
+        confirmation.style.display = "block";
+        form.reset();
+
+        setTimeout(() => {
+          confirmation.style.display = "none";
+        }, 4000);
+
+      } catch (error) {
+        alert("حدث خطأ أثناء إرسال البيانات، يرجى المحاولة لاحقًا.");
+        console.error(error);
       }
     });
   </script>

@@ -6,28 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
   <style>
-    /* نفس التنسيقات كما في الكود السابق */
     :root {
       --sky-blue:  #87CEEB;
       --navy:      #000080;
       --text-color: white;
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Cairo', sans-serif;
       background: linear-gradient(to bottom, var(--sky-blue), var(--navy));
       color: var(--text-color);
       padding: 2rem;
     }
+
     h1 {
       text-align: center;
       margin-bottom: 2rem;
       font-size: 2rem;
     }
+
     form {
       background: rgba(255,255,255,0.15);
       max-width: 600px;
@@ -36,11 +39,13 @@
       border-radius: 15px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
+
     label {
       display: block;
       margin-bottom: 0.5rem;
       font-weight: bold;
     }
+
     input, select, textarea {
       width: 100%;
       padding: 0.75rem;
@@ -49,6 +54,7 @@
       margin-bottom: 1.5rem;
       font-family: inherit;
     }
+
     button {
       background-color: var(--text-color);
       color: var(--navy);
@@ -60,9 +66,11 @@
       cursor: pointer;
       transition: opacity 0.3s;
     }
+
     button:hover {
       opacity: 0.85;
     }
+
     @media (max-width: 600px) {
       form {
         padding: 1.5rem;
@@ -74,78 +82,72 @@
 
   <h1>استبيان نبض</h1>
 
-  <form id="survey-form">
-    <label for="child-name">اسم الطفل</label>
-    <input type="text" id="child-name" name="child_name" placeholder="أدخل اسم الطفل" required />
+  <form id="myForm">
+    <label for="name">اسم الطفل:</label>
+    <input type="text" id="name" name="name" required>
 
     <label for="q1">كم عمر الطفل؟</label>
-    <select id="q1" name="age" required>
+    <select id="q1" name="age">
       <option value="">اختر</option>
-      <option value="أقل من 5 سنوات">أقل من 5 سنوات</option>
-      <option value="من 5 إلى 10 سنوات">من 5 إلى 10 سنوات</option>
-      <option value="أكثر من 10 سنوات">أكثر من 10 سنوات</option>
+      <option value="under5">أقل من 5 سنوات</option>
+      <option value="5-10">من 5 إلى 10 سنوات</option>
+      <option value="10plus">أكثر من 10 سنوات</option>
     </select>
 
     <label for="q2">هل سبق وتم تشخيص الطفل؟</label>
-    <select id="q2" name="diagnosis" required>
+    <select id="q2" name="diagnosis">
       <option value="">اختر</option>
-      <option value="نعم">نعم</option>
-      <option value="لا">لا</option>
+      <option value="yes">نعم</option>
+      <option value="no">لا</option>
     </select>
 
     <label for="q3">ما نوع الدعم الذي تبحث عنه؟</label>
-    <textarea id="q3" name="support" rows="4" placeholder="مثال: علاج سلوكي، دعم أكاديمي، علاج نفسي..." required></textarea>
+    <textarea id="q3" name="support" rows="4" placeholder="مثال: علاج سلوكي، دعم أكاديمي، علاج نفسي..."></textarea>
 
     <label for="q4">هل ترغب بالتواصل مع أحد الأخصائيين؟</label>
-    <select id="q4" name="contact" required>
+    <select id="q4" name="contact">
       <option value="">اختر</option>
-      <option value="نعم">نعم</option>
-      <option value="لا">لا</option>
+      <option value="yes">نعم</option>
+      <option value="no">لا</option>
     </select>
 
     <button type="submit">إرسال</button>
   </form>
 
-  <div id="status-message" style="text-align:center; margin-top:1rem; font-weight:bold;"></div>
-
   <script>
-    const form = document.getElementById('survey-form');
-    const statusMessage = document.getElementById('status-message');
-
-    form.addEventListener('submit', function(e) {
+    document.getElementById("myForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
-      const data = {
-        name: document.getElementById('child-name').value.trim(),
-        age: document.getElementById('q1').value,
-        diagnosis: document.getElementById('q2').value,
-        support: document.getElementById('q3').value.trim(),
-        contact: document.getElementById('q4').value
-      };
-
-      fetch('https://script.google.com/macros/s/AKfycbzRZLdiOa87vfgMBi8YWY7rQYC8tziSJG2UTM5yomaaYWwNlOz2sUNTTlnMey0wVoQ/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbynOvMXZvwO0s0_UfcargClQ1sfln5f9nXcgW3n_NH5l1fK7aSA2KkztP1dVcIEwrr3/exec', {
         method: 'POST',
-        body: JSON.stringify(data),
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: document.getElementById("name").value,
+          age: document.getElementById("q1").value,
+          diagnosis: document.getElementById("q2").value,
+          support: document.getElementById("q3").value,
+          contact: document.getElementById("q4").value
+        })
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("تم إرسال الاستبيان بنجاح ✅");
+          document.getElementById("myForm").reset();
+        } else {
+          alert("حدث خطأ أثناء الإرسال ❌");
         }
-      }).then(response => response.json())
-        .then(data => {
-          if (data.result === "success") {
-            statusMessage.textContent = "تم إرسال الاستبيان بنجاح، شكرًا لك!";
-            form.reset();
-          } else {
-            statusMessage.textContent = "حدث خطأ أثناء الإرسال، حاول مرة أخرى.";
-          }
-        }).catch(error => {
-          console.error('Error:', error);
-          statusMessage.textContent = "حدث خطأ أثناء الإرسال، تحقق من اتصالك بالإنترنت.";
-        });
+      })
+      .catch(error => {
+        alert("حدث خطأ، تحقق من اتصالك بالإنترنت ❗");
+      });
     });
   </script>
 
 </body>
 </html>
+
 
 
 

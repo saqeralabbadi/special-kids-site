@@ -2,172 +2,204 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <title>الخطط والأسعار</title>
+  <title>انضم إلى فريقنا - تصميم مثل cippoegypt</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet" />
   <style>
+    /* Reset & base */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
     body {
-      margin: 0;
       font-family: 'Cairo', sans-serif;
-      background: linear-gradient(135deg, #f0f0f3, #1b2749);
-      color: #1b2749;
+      background: url('https://www.cippoegypt.com/wp-content/uploads/2021/05/practitioners-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      direction: rtl;
+      color: #222;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 2rem 1rem;
+      padding: 40px 20px;
     }
 
+    /* التراكب الغامق */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-color: rgba(14, 27, 48, 0.8);
+      z-index: 0;
+    }
+
+    .wrapper {
+      position: relative;
+      max-width: 1200px;
+      width: 100%;
+      z-index: 1;
+    }
+
+    /* العنوان */
     h1 {
-      margin-bottom: 2rem;
-      color: #0f1c40;
-      font-size: 2.5rem;
+      font-weight: 700;
+      color: white;
+      font-size: 36px;
+      margin-bottom: 40px;
       text-align: center;
+      text-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
 
-    .pricing-container {
+    /* شبكة البطاقات */
+    .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-      gap: 2rem;
-      width: 100%;
-      max-width: 1200px;
+      gap: 25px;
     }
 
+    /* بطاقة */
     .card {
-      background: #e1e4eb;
-      border-radius: 15px;
-      box-shadow: 0 8px 15px rgba(27, 39, 73, 0.15);
-      padding: 2rem;
-      color: #1b2749;
+      background-color: #1a2a4a;
+      border-radius: 14px;
+      padding: 30px 25px;
+      box-shadow:
+        0 8px 20px rgb(10 35 68 / 0.4),
+        inset 0 0 0 2px rgb(33 66 114 / 0.8);
+      color: white;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: space-between;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: default;
-      border: 2px solid transparent;
     }
     .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 30px rgba(27, 39, 73, 0.3);
-      border-color: #344d99;
+      transform: translateY(-10px);
+      box-shadow:
+        0 15px 30px rgb(10 35 68 / 0.6),
+        inset 0 0 0 2px #4ea8f6;
     }
 
-    /* ألوان مختلفة للبطاقات */
-    .basic {
-      background: #f7f8fa;
-      border-left: 8px solid #344d99;
-    }
-
-    .standard {
-      background: #d8dce8;
-      border-left: 8px solid #2a3f7d;
-    }
-
-    .pro {
-      background: #c0c6da;
-      border-left: 8px solid #223261;
-    }
-
-    .proplus {
-      background: #a8afcc;
-      border-left: 8px solid #1b2749;
-    }
-
+    /* اسم البطاقة */
     .card h2 {
-      margin-top: 0;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 26px;
+      margin-bottom: 18px;
+      color: #7db1ff;
       text-align: center;
+      text-shadow: 0 0 8px #5a84c9;
+    }
+
+    /* سعر العملة */
+    .currency {
+      font-size: 16px;
+      font-weight: 600;
+      color: #a5c5ff;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    /* السعر */
+    .price {
+      font-weight: 800;
+      font-size: 48px;
+      color: #4ea8f6;
+      margin-bottom: 20px;
+      text-align: center;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    /* وصف البطاقة */
+    .description {
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #a9b9db;
+      min-height: 90px;
+    }
+
+    /* قائمة المميزات */
+    ul.features {
+      list-style: none;
+      margin-bottom: 30px;
+      padding-left: 0;
+    }
+    ul.features li {
+      position: relative;
+      padding-right: 30px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #bbcef8;
+    }
+    ul.features li::before {
+      content: '✔';
+      position: absolute;
+      right: 0;
+      color: #4ea8f6;
       font-weight: 700;
     }
 
-    .price {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      color: #0f1c40;
-    }
+    /* إزالة زر الاشتراك */
 
-    .features {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 0;
-      line-height: 1.6;
-    }
-
-    .features li {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(27, 39, 73, 0.15);
-    }
-
-    .features li:last-child {
-      border-bottom: none;
-    }
-
-    @media(max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-      .price {
-        font-size: 2rem;
-      }
-    }
   </style>
 </head>
 <body>
+  <div class="wrapper">
+    <h1>خطط الاشتراك والأسعار</h1>
+    <div class="cards">
 
-  <h1>الخطط والأسعار</h1>
+      <div class="card">
+        <h2>الأساسية</h2>
+        <div class="currency">دينار أردني</div>
+        <div class="price">100</div>
+        <div class="description">خطة مناسبة للمبتدئين مع ميزات أساسية تساعدك على البدء بسهولة.</div>
+        <ul class="features">
+          <li>دعم محدود</li>
+          <li>الوصول إلى الموارد الأساسية</li>
+          <li>دورات تعليمية عبر الإنترنت</li>
+        </ul>
+      </div>
 
-  <div class="pricing-container">
+      <div class="card">
+        <h2>القياسية</h2>
+        <div class="currency">دينار أردني</div>
+        <div class="price">250</div>
+        <div class="description">خطة متكاملة تلبي حاجات المستخدم المتوسط وتوفر دعمًا أكبر.</div>
+        <ul class="features">
+          <li>دعم فني متقدم</li>
+          <li>الوصول إلى محتوى حصري</li>
+          <li>استشارات شهرية</li>
+        </ul>
+      </div>
 
-    <div class="card basic">
-      <h2>أساسية</h2>
-      <div class="price">50 د.أ / شهر</div>
-      <ul class="features">
-        <li>دعم أساسي 24/7</li>
-        <li>الوصول إلى المحتوى الأساسي</li>
-        <li>5 استشارات شهرية</li>
-        <li>تحديثات أسبوعية</li>
-      </ul>
+      <div class="card">
+        <h2>Pro</h2>
+        <div class="currency">دينار أردني</div>
+        <div class="price">500</div>
+        <div class="description">خطة احترافية توفر جميع الأدوات اللازمة للمحترفين.</div>
+        <ul class="features">
+          <li>دعم مباشر 24/7</li>
+          <li>تحديثات مستمرة</li>
+          <li>تحليلات متقدمة</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Pro+</h2>
+        <div class="currency">دينار أردني</div>
+        <div class="price">1000</div>
+        <div class="description">الخطة الأفضل للمؤسسات والشركات مع ميزات متميزة.</div>
+        <ul class="features">
+          <li>دعم مخصص</li>
+          <li>تكامل مع الأنظمة الأخرى</li>
+          <li>تقارير مفصلة</li>
+        </ul>
+      </div>
+
     </div>
-
-    <div class="card standard">
-      <h2>قياسية</h2>
-      <div class="price">100 د.أ / شهر</div>
-      <ul class="features">
-        <li>كل مميزات الخطة الأساسية</li>
-        <li>10 استشارات شهرية</li>
-        <li>دعم عبر الهاتف</li>
-        <li>الوصول إلى محتوى مميز</li>
-      </ul>
-    </div>
-
-    <div class="card pro">
-      <h2>Pro</h2>
-      <div class="price">200 د.أ / شهر</div>
-      <ul class="features">
-        <li>كل مميزات الخطة القياسية</li>
-        <li>استشارات غير محدودة</li>
-        <li>جلسات مباشرة مع الخبراء</li>
-        <li>تخصيص الدعم حسب الحاجة</li>
-      </ul>
-    </div>
-
-    <div class="card proplus">
-      <h2>Pro+</h2>
-      <div class="price">300 د.أ / شهر</div>
-      <ul class="features">
-        <li>كل مميزات خطة Pro</li>
-        <li>دعم مخصص 24/7</li>
-        <li>الوصول إلى ورش عمل حصرية</li>
-        <li>تحليل مفصل لحالة الطفل</li>
-      </ul>
-    </div>
-
   </div>
-
 </body>
 </html>
+
 
 

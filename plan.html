@@ -3,235 +3,162 @@
 <head>
   <meta charset="UTF-8" />
   <title>انضم إلى فريقنا</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet" />
   <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
+    body, html {
+      margin: 0; padding: 0; height: 100%;
       font-family: 'Cairo', sans-serif;
-      min-height: 100vh;
-      background: url('https://www.cippoegypt.com/wp-content/uploads/2021/05/practitioners-bg.jpg') no-repeat center center fixed;
+      background: url('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
       background-size: cover;
       position: relative;
-      direction: rtl;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 20px;
+      color: #0b2545;
     }
-
-    /* تراكب غامق */
     body::before {
       content: "";
-      position: fixed;
+      position: absolute;
       inset: 0;
-      background-color: rgba(14, 27, 48, 0.85);
+      background: rgba(255, 255, 255, 0.85);
       z-index: 0;
     }
-
     .container {
       position: relative;
-      background: rgba(255 255 255 / 0.05);
-      border: 1px solid rgba(255 255 255 / 0.2);
-      border-radius: 16px;
-      box-shadow: 0 8px 32px 0 rgba(14, 27, 48, 0.5);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 40px 35px;
-      max-width: 480px;
-      width: 100%;
       z-index: 1;
+      max-width: 480px;
+      margin: 3rem auto;
+      background: rgba(255 255 255 / 0.9);
+      padding: 2.5rem 2rem 3rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgb(11 37 69 / 0.2);
     }
-
     h1 {
-      font-weight: 700;
-      font-size: 30px;
-      margin-bottom: 40px;
       text-align: center;
-      color: white;
-      letter-spacing: 1px;
+      margin-bottom: 1.8rem;
+      font-weight: 700;
+      color: #0b2545;
+      font-size: 1.9rem;
+      letter-spacing: 0.05em;
     }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-    }
-
-    label {
+    form label {
+      display: block;
+      margin-bottom: 0.4rem;
       font-weight: 600;
-      font-size: 16px;
-      margin-bottom: 6px;
-      color: white;
+      color: #0b2545;
     }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    select,
-    textarea {
+    form input[type="text"],
+    form input[type="tel"],
+    form input[type="email"],
+    form select,
+    form textarea {
       width: 100%;
-      padding: 12px 15px;
-      border: 1px solid rgba(255 255 255 / 0.4);
-      border-radius: 8px;
+      border: none;
+      border-bottom: 2px solid #0b2545;
       background: transparent;
-      color: white;
-      font-size: 14px;
-      font-family: 'Cairo', sans-serif;
-      transition: border-color 0.3s ease;
-      resize: none;
+      padding: 8px 4px 6px 4px;
+      font-size: 1rem;
+      color: #0b2545;
+      margin-bottom: 1.5rem;
+      outline-offset: 3px;
+      outline-color: transparent;
+      transition: outline-color 0.3s ease;
+      resize: vertical;
     }
-
-    input::placeholder,
-    textarea::placeholder {
-      color: rgba(255 255 255 / 0.7);
+    form input[type="text"]:focus,
+    form input[type="tel"]:focus,
+    form input[type="email"]:focus,
+    form select:focus,
+    form textarea:focus {
+      outline-color: #274472;
     }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      outline: none;
-      border-color: #4169e1; /* كحلي */
-      background: rgba(255 255 255 / 0.1);
+    form textarea {
+      min-height: 80px;
     }
-
-    select {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      background-size: 16px 16px;
-      cursor: pointer;
-    }
-
-    textarea {
-      min-height: 110px;
-    }
-
-    button {
-      background-color: #4169e1; /* كحلي */
+    button[type="submit"] {
+      background-color: #0b2545;
       color: white;
       border: none;
-      border-radius: 25px;
-      padding: 14px 0;
-      font-size: 17px;
+      width: 100%;
+      padding: 12px 0;
+      font-size: 1.1rem;
       font-weight: 700;
+      border-radius: 30px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      margin-top: 10px;
     }
-
-    button:hover {
-      background-color: #2e4bb7;
-    }
-
-    .confirmation-message {
-      margin-top: 14px;
-      font-weight: 600;
-      font-size: 15px;
-      color: #a3ff9f; /* أخضر فاتح */
-      text-align: center;
-      display: none;
-    }
-
-    @media (max-width: 520px) {
-      .container {
-        padding: 30px 20px;
-        max-width: 100%;
-      }
+    button[type="submit"]:hover {
+      background-color: #274472;
     }
   </style>
 </head>
 <body>
+
   <div class="container">
     <h1>انضم إلى فريقنا</h1>
     <form id="joinForm">
-      <div>
-        <label for="fullName">الاسم الكامل</label>
-        <input type="text" id="fullName" name="fullName" placeholder="ادخل اسمك الكامل" required />
-      </div>
+      <label for="fullName">الاسم الكامل</label>
+      <input type="text" id="fullName" name="fullName" required placeholder="أدخل اسمك الكامل" />
 
-      <div>
-        <label for="phone">رقم الهاتف</label>
-        <input type="tel" id="phone" name="phone" placeholder="مثال: 079xxxxxxx" required pattern="[\d\s\+\-]+" />
-      </div>
+      <label for="phone">رقم الهاتف</label>
+      <input type="tel" id="phone" name="phone" required placeholder="أدخل رقم الهاتف" />
 
-      <div>
-        <label for="email">البريد الإلكتروني</label>
-        <input type="email" id="email" name="email" placeholder="example@mail.com" required />
-      </div>
+      <label for="email">البريد الإلكتروني</label>
+      <input type="email" id="email" name="email" required placeholder="أدخل بريدك الإلكتروني" />
 
-      <div>
-        <label for="jobType">نوع العمل</label>
-        <select id="jobType" name="jobType" required>
-          <option value="" disabled selected>اختر نوع العمل</option>
-          <option value="full-time">دوام كامل</option>
-          <option value="freelance">مستقل</option>
-        </select>
-      </div>
+      <label for="workType">نوع الدوام</label>
+      <select id="workType" name="workType" required>
+        <option value="" disabled selected>اختر نوع الدوام</option>
+        <option value="دوام كامل">دوام كامل</option>
+        <option value="مستقل">مستقل</option>
+      </select>
 
-      <div>
-        <label for="about">اخبرنا عن نفسك</label>
-        <textarea id="about" name="about" placeholder="اكتب نبذة عن خبراتك، مهاراتك، وأهدافك..." required></textarea>
-      </div>
+      <label for="about">اخبرنا عن نفسك</label>
+      <textarea id="about" name="about" placeholder="شاركنا نبذة عنك" required></textarea>
 
       <button type="submit">إرسال</button>
-
-      <div class="confirmation-message" id="confirmationMessage">تم إرسال بياناتك بنجاح!</div>
     </form>
   </div>
 
   <script>
-    const form = document.getElementById('joinForm');
-    const confirmationMessage = document.getElementById('confirmationMessage');
+    const telegramBotToken = '7892141496:AAHJm_IP7rXtVqrOQQtm9flEg6iCn5K9g3c';
+    const chatId = '6345723153';
 
-    form.addEventListener('submit', async (e) => {
+    document.getElementById('joinForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      const data = {
-        الاسم: form.fullName.value.trim(),
-        الهاتف: form.phone.value.trim(),
-        البريد_الإلكتروني: form.email.value.trim(),
-        نوع_العمل: form.jobType.value,
-        عن_النفس: form.about.value.trim(),
-      };
+      const fullName = encodeURIComponent(document.getElementById('fullName').value.trim());
+      const phone = encodeURIComponent(document.getElementById('phone').value.trim());
+      const email = encodeURIComponent(document.getElementById('email').value.trim());
+      const workType = encodeURIComponent(document.getElementById('workType').value);
+      const about = encodeURIComponent(document.getElementById('about').value.trim());
 
-      const telegramBotToken = '7892141496:AAHJm_IP7rXtVqrOQQtm9flEg6iCn5K9g3c'; // استبدل بالتوكن الخاص بك
-      const chatId = '6345723153'; // استبدل بمعرف المحادثة الخاص بك
+      const message = `
+انضم إلى فريقنا
+الاسم الكامل: ${fullName}
+رقم الهاتف: ${phone}
+البريد الإلكتروني: ${email}
+نوع الدوام: ${workType}
+نبذة عن المتقدم: ${about}
+      `;
 
-      const message = Object.entries(data)
-        .map(([key, val]) => `*${key}:* ${val}`)
-        .join('\n');
+      const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${message}`;
 
-      const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&parse_mode=Markdown&text=${encodeURIComponent(message)}`;
-
-      try {
-        const response = await fetch(url);
-        if (response.ok) {
-          confirmationMessage.style.display = 'block';
-          form.reset();
-          setTimeout(() => {
-            confirmationMessage.style.display = 'none';
-          }, 4000);
-        } else {
-          alert('حدث خطأ أثناء الإرسال. حاول مرة أخرى.');
-        }
-      } catch (error) {
-        alert('حدث خطأ في الاتصال بالإنترنت.');
-      }
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          // لا نظهر أي رسالة للمستخدم (حسب طلبك)
+          // ممكن إضافة هنا رسالة تأكيد داخل الصفحة إذا أردت لاحقاً
+          // مثلا: alert('تم الإرسال');
+          // لكن حالياً لا شيء
+          this.reset();
+        })
+        .catch(error => {
+          // يمكن إضافة هنا رسالة خطأ إذا أردت
+          console.error('Error:', error);
+        });
     });
   </script>
+
 </body>
 </html>
-
 
 

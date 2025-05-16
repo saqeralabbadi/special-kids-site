@@ -4,146 +4,119 @@
   <meta charset="UTF-8" />
   <title>استبيان نبض</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --sky-blue:  #87CEEB;
-      --navy:      #000080;
-      --text-color: white;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      font-family: 'Cairo', sans-serif;
-      background: linear-gradient(to bottom, var(--sky-blue), var(--navy));
-      color: var(--text-color);
-      padding: 2rem;
+      font-family: Arial, sans-serif;
+      padding: 1rem;
+      background: #f0f0f0;
     }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2rem;
-    }
-
     form {
-      background: rgba(255,255,255,0.15);
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-    }
-
-    input, select, textarea {
+    input, select, button, textarea {
       width: 100%;
-      padding: 0.75rem;
-      border-radius: 10px;
-      border: none;
-      margin-bottom: 1.5rem;
-      font-family: inherit;
-    }
-
-    button {
-      background-color: var(--text-color);
-      color: var(--navy);
-      padding: 0.75rem 2rem;
-      border: none;
-      border-radius: 30px;
-      font-weight: bold;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
       font-size: 1rem;
+    }
+    button {
+      background-color: #0088cc;
+      color: white;
+      border: none;
       cursor: pointer;
-      transition: opacity 0.3s;
+      border-radius: 5px;
     }
-
     button:hover {
-      opacity: 0.85;
-    }
-
-    @media (max-width: 600px) {
-      form {
-        padding: 1.5rem;
-      }
+      background-color: #006699;
     }
   </style>
 </head>
 <body>
 
-  <h1>استبيان نبض</h1>
+  <h2 style="text-align:center;">استبيان نبض</h2>
 
   <form id="surveyForm">
     <label for="name">اسم الطفل:</label>
-    <input type="text" id="name" name="name" required>
+    <input type="text" id="name" name="name" required placeholder="ادخل اسم الطفل" />
 
-    <label for="q1">كم عمر الطفل؟</label>
-    <select id="q1" name="age" required>
+    <label for="age">كم عمر الطفل؟</label>
+    <select id="age" name="age" required>
       <option value="">اختر</option>
-      <option value="under5">أقل من 5 سنوات</option>
-      <option value="5-10">من 5 إلى 10 سنوات</option>
-      <option value="10plus">أكثر من 10 سنوات</option>
+      <option value="أقل من 5 سنوات">أقل من 5 سنوات</option>
+      <option value="5-10 سنوات">من 5 إلى 10 سنوات</option>
+      <option value="أكثر من 10 سنوات">أكثر من 10 سنوات</option>
     </select>
 
-    <label for="q2">هل سبق وتم تشخيص الطفل؟</label>
-    <select id="q2" name="diagnosis" required>
+    <label for="diagnosis">هل سبق وتم تشخيص الطفل؟</label>
+    <select id="diagnosis" name="diagnosis" required>
       <option value="">اختر</option>
-      <option value="yes">نعم</option>
-      <option value="no">لا</option>
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
     </select>
 
-    <label for="q3">ما نوع الدعم الذي تبحث عنه؟</label>
-    <textarea id="q3" name="support" rows="4" placeholder="مثال: علاج سلوكي، دعم أكاديمي، علاج نفسي..." required></textarea>
+    <label for="support">ما نوع الدعم الذي تبحث عنه؟</label>
+    <textarea id="support" name="support" rows="3" placeholder="مثال: علاج سلوكي، دعم أكاديمي، علاج نفسي..." required></textarea>
 
-    <label for="q4">هل ترغب بالتواصل مع أحد الأخصائيين؟</label>
-    <select id="q4" name="contact" required>
+    <label for="contact">هل ترغب بالتواصل مع أحد الأخصائيين؟</label>
+    <select id="contact" name="contact" required>
       <option value="">اختر</option>
-      <option value="yes">نعم</option>
-      <option value="no">لا</option>
+      <option value="نعم">نعم</option>
+      <option value="لا">لا</option>
     </select>
 
     <button type="submit">إرسال</button>
   </form>
 
-  <script>
-    document.getElementById("surveyForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+<script>
+const token = '7892141496:AAHJm_IP7rXtVqrOQQtm9flEg6iCn5K9g3c';
+const chatId = '6345723153';
 
-      const data = {
-        name: document.getElementById("name").value,
-        age: document.getElementById("q1").value,
-        diagnosis: document.getElementById("q2").value,
-        support: document.getElementById("q3").value,
-        contact: document.getElementById("q4").value
-      };
+document.getElementById('surveyForm').addEventListener('submit', function(e){
+  e.preventDefault();
 
-      fetch("https://script.google.com/macros/s/AKfycbx4O30JHt7nytppl2882jbXu7FshVOdC5l-lhQvBZq8ybEmhrUGw4GVbmjVva030dvd/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(response => response.text())
-      .then(result => {
-        alert("✅ تم إرسال البيانات بنجاح!");
-        document.getElementById("surveyForm").reset();
-      })
-      .catch(error => {
-        alert("❌ حدث خطأ، تحقق من الاتصال بالإنترنت أو أعد المحاولة.");
-        console.error("خطأ:", error);
-      });
-    });
-  </script>
+  const name = document.getElementById('name').value.trim();
+  const age = document.getElementById('age').value;
+  const diagnosis = document.getElementById('diagnosis').value;
+  const support = document.getElementById('support').value.trim();
+  const contact = document.getElementById('contact').value;
+
+  const message = 
+    `استبيان نبض:\n` +
+    `اسم الطفل: ${name}\n` +
+    `العمر: ${age}\n` +
+    `تم تشخيصه: ${diagnosis}\n` +
+    `نوع الدعم: ${support}\n` +
+    `رغبة بالتواصل: ${contact}`;
+
+  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text: message
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if(data.ok){
+      alert('تم إرسال البيانات إلى تليجرام بنجاح!');
+      e.target.reset();
+    } else {
+      alert('فشل في إرسال البيانات، حاول مرة أخرى.');
+      console.error(data);
+    }
+  })
+  .catch(err => {
+    alert('حدث خطأ في الاتصال.');
+    console.error(err);
+  });
+});
+</script>
 
 </body>
 </html>

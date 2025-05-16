@@ -1,1 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>الخطط والأسعار</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #d4f5d4, #0f5132);
+      color: #003d00;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+      color: #0b3d91;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    .pricing-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 2rem;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #a5d6a7, #4caf50);
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+      padding: 2rem;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+      cursor: pointer;
+    }
+
+    /* درجات مختلفة للبطاقات */
+    .basic {
+      background: linear-gradient(145deg, #b9f6ca, #2e7d32);
+    }
+
+    .standard {
+      background: linear-gradient(145deg, #81c784, #1b5e20);
+    }
+
+    .pro {
+      background: linear-gradient(145deg, #66bb6a, #145214);
+    }
+
+    .proplus {
+      background: linear-gradient(145deg, #4caf50, #0b3d0b);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .price {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      text-align: center;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .features li {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .features li:last-child {
+      border-bottom: none;
+    }
+
+    .btn {
+      background-color: #2196f3;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      align-self: center;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 10px rgba(33, 150, 243, 0.5);
+    }
+    .btn:hover {
+      background-color: #0b7dda;
+      box-shadow: 0 6px 15px rgba(11, 125, 218, 0.7);
+    }
+
+    @media(max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .price {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>الخطط والأسعار</h1>
+
+  <div class="pricing-container">
+
+    <div class="card basic">
+      <h2>أساسية</h2>
+      <div class="price">50 ريال / شهر</div>
+      <ul class="features">
+        <li>دعم أساسي 24/7</li>
+        <li>الوصول إلى المحتوى الأساسي</li>
+        <li>5 استشارات شهرية</li>
+        <li>تحديثات أسبوعية</li>
+      </ul>
+      <a href="#" class="btn">اشترك الآن</a>
+    </div>
+
+    <div class="card standard">
+      <h2>قياسية</h2>
+      <div class="price">100 ريال / شهر</div>
+      <ul class="features">
+        <li>كل مميزات الخطة الأساسية</li>
+        <li>10 استشارات شهرية</li>
+        <li>دعم عبر الهاتف</li>
+        <li>الوصول إلى محتوى مميز</li>
+      </ul>
+      <a href="#" class="btn">اشترك الآن</a>
+    </div>
+
+    <div class="card pro">
+      <h2>Pro</h2>
+      <div class="price">200 ريال / شهر</div>
+      <ul class="features">
+        <li>كل مميزات الخطة القياسية</li>
+        <li>استشارات غير محدودة</li>
+        <li>جلسات مباشرة مع الخبراء</li>
+        <li>تخصيص الدعم حسب الحاجة</li>
+      </ul>
+      <a href="#" class="btn">اشترك الآن</a>
+    </div>
+
+    <div class="card proplus">
+      <h2>Pro+</h2>
+      <div class="price">300 ريال / شهر</div>
+      <ul class="features">
+        <li>كل مميزات خطة Pro</li>
+        <li>دعم مخصص 24/7</li>
+        <li>الوصول إلى ورش عمل حصرية</li>
+        <li>تحليل مفصل لحالة الطفل</li>
+      </ul>
+      <a href="#" class="btn">اشترك الآن</a>
+    </div>
+
+  </div>
+
+</body>
+</html>
 

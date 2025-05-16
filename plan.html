@@ -8,8 +8,8 @@
   <style>
     body {
       font-family: 'Cairo', sans-serif;
-      background: linear-gradient(to bottom, #f0f3f7, #d9e2ec);
-      color: #1b2749;
+      background: #2e3440; /* كحلي غامق */
+      color: #d8dee9; /* رمادي فاتح */
       padding: 2rem;
       display: flex;
       justify-content: center;
@@ -18,10 +18,10 @@
     }
 
     form {
-      background: white;
+      background: #3b4252; /* رمادي متوسط */
       padding: 2rem;
       border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(27, 39, 73, 0.1);
+      box-shadow: 0 8px 20px rgba(27, 39, 73, 0.5);
       max-width: 450px;
       width: 100%;
     }
@@ -29,7 +29,7 @@
     h1 {
       text-align: center;
       margin-bottom: 1.5rem;
-      color: #344d99;
+      color: #88c0d0; /* كحلي فاتح */
       font-size: 2rem;
     }
 
@@ -38,33 +38,40 @@
       font-weight: bold;
       margin-bottom: 0.5rem;
       margin-top: 1rem;
-      color: #223261;
+      color: #d8dee9;
     }
 
     input {
       width: 100%;
       padding: 0.75rem;
       border-radius: 8px;
-      border: 1.5px solid #a9b6d6;
+      border: 1.5px solid #4c566a;
+      background: #434c5e; /* خلفية رمادية داكنة للحقل */
+      color: #d8dee9;
       font-family: inherit;
       font-size: 1rem;
       transition: border-color 0.3s;
     }
 
+    input::placeholder {
+      color: #a3b1c6;
+    }
+
     input:focus {
       outline: none;
-      border-color: #344d99;
-      box-shadow: 0 0 5px rgba(52, 77, 153, 0.5);
+      border-color: #88c0d0;
+      box-shadow: 0 0 5px rgba(136, 192, 208, 0.7);
+      background: #4c566a;
     }
 
     button {
       margin-top: 2rem;
       width: 100%;
       padding: 0.85rem;
-      background-color: #344d99;
+      background-color: #81a1c1; /* كحلي فاتح */
       border: none;
       border-radius: 30px;
-      color: white;
+      color: #2e3440;
       font-weight: bold;
       font-size: 1.1rem;
       cursor: pointer;
@@ -72,13 +79,14 @@
     }
 
     button:hover {
-      background-color: #223261;
+      background-color: #5e81ac;
+      color: white;
     }
   </style>
 </head>
 <body>
 
-  <form id="joinForm" action="#" method="post" onsubmit="return false;">
+  <form id="joinForm" onsubmit="return false;">
     <h1>انضم إلى فريقنا</h1>
 
     <label for="name">الاسم الكامل</label>
@@ -100,6 +108,9 @@
   </form>
 
   <script>
+    const botToken = '7892141496:AAHJm_IP7rXtVqrOQQtm9flEg6iCn5K9g3c'; // ضع هنا توكن البوت
+    const chatId = '6345723153'; // ضع هنا رقم الشات (أو الآي دي) اللي تبعت له الرسائل
+
     function submitForm() {
       const form = document.getElementById('joinForm');
       if (!form.checkValidity()) {
@@ -107,11 +118,38 @@
         return;
       }
 
-      // هنا تضع كود إرسال البيانات حسب طلبك (مثلاً إرسال للتلجرام أو لأي مكان آخر)
-      // حاليا فقط نعيد تعيين النموذج بدون ظهور رسالة
-      form.reset();
+      const name = encodeURIComponent(document.getElementById('name').value.trim());
+      const age = encodeURIComponent(document.getElementById('age').value.trim());
+      const specialization = encodeURIComponent(document.getElementById('specialization').value.trim());
+      const university = encodeURIComponent(document.getElementById('university').value.trim());
+      const phone = encodeURIComponent(document.getElementById('phone').value.trim());
+
+      const message = 
+        `*انضم إلى فريقنا*\n` +
+        `*الاسم:* ${name}\n` +
+        `*العمر:* ${age}\n` +
+        `*التخصص:* ${specialization}\n` +
+        `*الجامعة:* ${university}\n` +
+        `*رقم الهاتف:* ${phone}`;
+
+      const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}&parse_mode=Markdown`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if(data.ok) {
+            // لا نعرض رسالة تأكيد للمستخدم حسب طلبك
+            form.reset();
+          } else {
+            console.error('خطأ في الإرسال:', data);
+          }
+        })
+        .catch(error => {
+          console.error('حدث خطأ في الاتصال:', error);
+        });
     }
   </script>
 
 </body>
 </html>
+

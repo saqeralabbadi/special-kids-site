@@ -1,48 +1,116 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>خدمة الانتظار</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+
     body {
       font-family: 'Cairo', sans-serif;
-      background: linear-gradient(to bottom, #d0f0ff, #e7ffe7);
+      background: linear-gradient(to bottom right, #4a90e2, #28a745);
       margin: 0;
-      padding: 40px;
+      padding: 40px 20px;
       color: #003366;
       direction: rtl;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .container {
-      max-width: 700px;
-      margin: auto;
       background-color: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
     }
 
     h1 {
       color: #28a745;
-      font-size: 2rem;
-      margin-bottom: 20px;
+      font-size: 2.8rem;
+      margin-bottom: 25px;
+      font-weight: 900;
     }
 
     p {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       line-height: 1.8;
+      margin-bottom: 35px;
+      color: #1a2d4d;
     }
 
     .card {
       background-color: #28a745;
       color: white;
-      padding: 20px;
-      border-radius: 15px;
-      margin-top: 30px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      padding: 25px 20px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      color: #003366;
+      text-align: right;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px 15px;
       font-size: 1.2rem;
-      font-weight: bold;
+      border-radius: 10px;
+      border: 2px solid #28a745;
+      outline: none;
+      margin-bottom: 20px;
+      cursor: pointer;
+      color: #003366;
+      font-weight: 700;
+    }
+
+    .price-display {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #28a745;
+      margin-bottom: 30px;
+      min-height: 2rem;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 15px 0;
+      font-size: 1.4rem;
+      font-weight: 900;
+      border-radius: 25px;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1f7a30;
+    }
+
+    /* لجعل الخط أكبر على الشاشات الصغيرة */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+      p, .card, .price-display {
+        font-size: 1.1rem;
+      }
+      button {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -56,7 +124,48 @@
     <div class="card">
       راحة بالك تبدأ من هنا — خدمة الانتظار لطفلك بـ5 دنانير فقط للساعة.
     </div>
+
+    <label for="hours">اختر عدد الساعات التي تحتاجها:</label>
+    <select id="hours">
+      <option value="1">1 ساعة</option>
+      <option value="2">2 ساعة</option>
+      <option value="3">3 ساعات</option>
+      <option value="4">4 ساعات</option>
+      <option value="5">5 ساعات</option>
+      <option value="6">6 ساعات</option>
+      <option value="7">7 ساعات</option>
+      <option value="8">8 ساعات</option>
+    </select>
+
+    <div class="price-display" id="total-price">السعر: 5 دنانير</div>
+
+    <button id="book-btn">احجز الآن</button>
   </div>
+
+  <script>
+    const selectHours = document.getElementById('hours');
+    const priceDisplay = document.getElementById('total-price');
+    const bookBtn = document.getElementById('book-btn');
+
+    const pricePerHour = 5;
+
+    function updatePrice() {
+      const hours = parseInt(selectHours.value);
+      const total = hours * pricePerHour;
+      priceDisplay.textContent = `السعر: ${total} دنانير`;
+    }
+
+    selectHours.addEventListener('change', updatePrice);
+
+    bookBtn.addEventListener('click', () => {
+      const hours = selectHours.value;
+      alert(`شكراً لحجزك خدمة الانتظار لمدة ${hours} ${hours == 1 ? 'ساعة' : 'ساعات'}.\nسيتواصل معك فريقنا قريبًا.`);
+    });
+
+    // تحديث السعر عند تحميل الصفحة
+    updatePrice();
+  </script>
 </body>
 </html>
+
 

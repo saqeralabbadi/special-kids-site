@@ -11,7 +11,7 @@
       background: linear-gradient(to bottom right, #4a90e2, #28a745);
       margin: 0;
       padding: 40px 20px;
-      color: #003366;
+      color: white;
       direction: rtl;
       min-height: 100vh;
       display: flex;
@@ -20,16 +20,17 @@
     }
 
     .container {
-      background-color: white;
+      background: linear-gradient(135deg, #87CEEB, #00008B);
       max-width: 500px;
       padding: 40px 30px;
       border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       text-align: center;
+      color: white;
     }
 
     h1 {
-      color: #28a745;
+      color: #b2dfff;
       font-size: 2.8rem;
       margin-bottom: 25px;
       font-weight: 900;
@@ -39,11 +40,11 @@
       font-size: 1.3rem;
       line-height: 1.8;
       margin-bottom: 35px;
-      color: #1a2d4d;
+      color: #d0e6ff;
     }
 
     .card {
-      background-color: #28a745;
+      background-color: rgba(255, 255, 255, 0.2);
       color: white;
       padding: 25px 20px;
       border-radius: 20px;
@@ -58,7 +59,7 @@
       font-weight: 700;
       margin-bottom: 10px;
       font-size: 1.1rem;
-      color: #003366;
+      color: #b2dfff;
       text-align: right;
     }
 
@@ -67,18 +68,19 @@
       padding: 12px 15px;
       font-size: 1.2rem;
       border-radius: 10px;
-      border: 2px solid #28a745;
+      border: 2px solid #b2dfff;
       outline: none;
       margin-bottom: 20px;
       cursor: pointer;
       color: #003366;
       font-weight: 700;
+      background-color: white;
     }
 
     .price-display {
       font-size: 1.6rem;
       font-weight: 900;
-      color: #28a745;
+      color: #b2dfff;
       margin-bottom: 30px;
       min-height: 2rem;
     }
@@ -100,7 +102,6 @@
       background-color: #1f7a30;
     }
 
-    /* لجعل الخط أكبر على الشاشات الصغيرة */
     @media (max-width: 480px) {
       h1 {
         font-size: 2rem;
@@ -159,13 +160,15 @@
 
     bookBtn.addEventListener('click', () => {
       const hours = selectHours.value;
-      alert(`شكراً لحجزك خدمة الانتظار لمدة ${hours} ${hours == 1 ? 'ساعة' : 'ساعات'}.\nسيتواصل معك فريقنا قريبًا.`);
+      const message = encodeURIComponent(`السلام عليكم، أود حجز خدمة الانتظار لمدة ${hours} ${hours == 1 ? 'ساعة' : 'ساعات'}. الرجاء التواصل معي. شكراً.`);
+      // رقم الواتساب الدولي بدون +
+      window.open(`https://wa.me/962775147413?text=${message}`, '_blank');
     });
 
-    // تحديث السعر عند تحميل الصفحة
     updatePrice();
   </script>
 </body>
 </html>
+
 
 
